@@ -28,6 +28,8 @@ Tech Talk Blog dibangun menggunakan teknologi-teknologi berikut:
 [![Nodejs Badge](https://img.shields.io/badge/node.js-%23339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)](#)
 [![Express Badge](https://img.shields.io/badge/express-%23000000.svg?style=for-the-badge&logo=express&logoColor=white)](#)
 [![MongoDB Badge](https://img.shields.io/badge/mongodb-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)](#)
+[![TailwindCSS Badge](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](#)
+[![Flowbite Badge](https://img.shields.io/badge/flowbite-%231A202C.svg?style=for-the-badge&logo=flowbite&logoColor=white)](#)
 
 
 
