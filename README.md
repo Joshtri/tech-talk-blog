@@ -36,7 +36,7 @@ Tech Talk Blog dibangun menggunakan teknologi-teknologi berikut:
 ## 🚧 Under Construction
 Terdapat beberapa kemungkinan penambahan fitur dan perbaikan di masa mendatang. Berikut adalah beberapa fitur dan perbaikan yang mungkin akan ditambahkan:
 - [ ] fitur komentar
-- [ ] fitur like postinga
+- [ ] fitur like postingan
 - [ ] penambahan cover untuk artikel
 - [ ] .....
 
