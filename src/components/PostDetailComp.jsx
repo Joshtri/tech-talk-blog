@@ -15,7 +15,9 @@ function PostDetailComp() {
   const navigate = useNavigate();
   const { id } = useParams(); // Ensure this matches the parameter in the route
 
+  const titlePage = "Postingan";
   useEffect(() => {
+    document.title = titlePage;
     getPostById();
   }, []);
 

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 
 function About() {
+
+  const titlePage = "About";
+  useEffect(() => {
+    document.title = titlePage;
+
+  }, []);
+
   return (
     <div className="flex justify-center items-center  bg-gray-100">
       <Card className="max-w-3xl p-4 mt-10 mb-10">
