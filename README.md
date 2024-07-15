@@ -33,6 +33,13 @@ Tech Talk Blog dibangun menggunakan teknologi-teknologi berikut:
 [![Axios Badge](https://img.shields.io/badge/axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)](#)
 [![React Icons Badge](https://img.shields.io/badge/react--icons-%23E91E63.svg?style=for-the-badge&logo=react&logoColor=white)](#)
 
+## 🚧 Under Construction
+Terdapat beberapa kemungkinan penambahan fitur dan perbaikan di masa mendatang. Berikut adalah beberapa fitur dan perbaikan yang mungkin akan ditambahkan:
+- [ ] fitur komentar
+- [ ] fitur like postinga
+- [ ] penambahan cover untuk artikel
+- [ ] .....
+
 ## License:
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 - ![License](https://img.shields.io/badge/License-MIT-yellow)
