@@ -2,52 +2,39 @@
 
 **Tech Talk Blog** merupakan website blog yang dibuat untuk membagikan postingan artikel mengenai dunia programming / coding. 
 
-## Official Plugins
+## Plugins Resmi
 
-Tech Talk Blog supports the following two official plugins for React development:
+Tech Talk Blog mendukung dua plugin resmi berikut untuk pengembangan React:
 
-1. [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
-   - **Description**: This plugin uses [Babel](https://babeljs.io/) for Fast Refresh.
-   - **Installation**:
-     ```bash
-     npm install @vitejs/plugin-react
-     ```
-   - **Usage**:
-     ```javascript
-     import react from '@vitejs/plugin-react';
+## Memulai
 
-     export default {
-       plugins: [react()],
-     };
-     ```
-   - **Features**:
-     - Fast Refresh
-     - JSX Transform
-     - Automatic import of React
+Untuk memulai dengan Tech Talk Blog, ikuti langkah-langkah berikut:
 
-2. [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-   - **Description**: This plugin uses [SWC](https://swc.rs/) for Fast Refresh.
-   - **Installation**:
-     ```bash
-     npm install @vitejs/plugin-react-swc
-     ```
-   - **Usage**:
-     ```javascript
-     import react from '@vitejs/plugin-react-swc';
+1. **Kunjungi Website**:
+   Buka [Tech Talk Blog](https://www.techtalkblog.com) di peramban Anda.
 
-     export default {
-       plugins: [react()],
-     };
-     ```
-   - **Features**:
-     - Fast Refresh
-     - JSX Transform
-     - Faster builds with SWC
+2. **Jelajahi Artikel**:
+   Cari dan baca artikel-artikel menarik mengenai dunia programming dan coding.
 
-## Getting Started
 
-To get started with Tech Talk Blog, follow these steps:
+## Teknologi yang Digunakan
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/techtalk-blog.git
+Tech Talk Blog dibangun menggunakan teknologi-teknologi berikut:
+
+- ![React](https://img.icons8.com/color/20/000000/react-native.png) **React**: Digunakan untuk membangun antarmuka pengguna yang interaktif.
+- ![Vite](https://img.icons8.com/fluency/20/000000/vite.png) **Vite**: Alat pembangunan yang digunakan untuk pengembangan cepat dan efisien.
+- ![Babel](https://img.icons8.com/color/20/000000/babel.png) **Babel**: Transpiler JavaScript yang digunakan dalam plugin @vitejs/plugin-react.
+- ![SWC](https://img.icons8.com/color/20/000000/swc.png) **SWC**: Compiler super cepat yang digunakan dalam plugin @vitejs/plugin-react-swc.
+- ![Node.js](https://img.icons8.com/color/20/000000/nodejs.png) **Node.js**: Lingkungan runtime JavaScript di server.
+- ![Express.js](https://img.icons8.com/color/20/000000/express.png) **Express.js**: Kerangka kerja untuk membangun aplikasi web di Node.js.
+- ![MongoDB](https://img.icons8.com/color/20/000000/mongodb.png) **MongoDB**: Basis data NoSQL yang digunakan untuk menyimpan data.
+
+
+
+## Kontak
+
+Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, silakan hubungi kami di [support@techtalkblog.com](mailto:support@techtalkblog.com).
+
+---
+
+Untuk informasi lebih lanjut, kunjungi [situs resmi kami](https://www.techtalkblog.com).
