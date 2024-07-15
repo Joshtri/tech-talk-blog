@@ -1,7 +1,7 @@
 import React from 'react'
 import { Footer } from "flowbite-react";
 import { Link } from 'react-router-dom';
-
+import techTalkLogo from '../assets/tech_talk.png';
 function FooterComp() {
   return (
     <>
@@ -10,7 +10,7 @@ function FooterComp() {
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Footer.Brand
             href="/"
-            src="/public/tech_talk.png"
+            src={techTalkLogo}
             alt="Flowbite Logo"
            
           />

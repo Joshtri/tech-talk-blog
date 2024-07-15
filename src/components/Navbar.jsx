@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { NavLink } from 'react-router-dom';
-
+import techTalkLogo from '../assets/tech_talk.png';
 
 function NavbarComp() {
 
@@ -12,7 +12,7 @@ function NavbarComp() {
     <>
       <Navbar fluid rounded>
         <Navbar.Brand href="/">
-          <img src="/public/tech_talk.png" className="mr-3 h-12 sm:h-10" alt="Flowbite React Logo" />
+          <img src={techTalkLogo} className="mr-3 h-12 sm:h-10" alt="Flowbite React Logo" />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white"></span>
         </Navbar.Brand>
         <Navbar.Toggle />
