@@ -1,6 +1,6 @@
 # Tech Talk Blog
 
-**Tech Talk Blog** merupakan website blog yang dibuat untuk membagikan postingan artikel mengenai dunia programming / coding. 
+**Tech Talk Blog** merupakan website blog yang dibuat untuk membagikan postingan artikel mengenai dunia programming / coding. Blog ini murni hanya sekedar untuk berbagi ilmu bagi semua pengunjung yang tertarik seputaran IT dan programming /coding.
 
 ## Plugins Resmi
 
@@ -40,4 +40,4 @@ Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, silakan hub
 
 ---
 
-Untuk informasi lebih lanjut, kunjungi [situs resmi kami](https://www.techtalkblog.com).
+Untuk informasi lebih lanjut, kunjungi [situs resmi kami](https://tech-talk-blog-rho.vercel.app/).
