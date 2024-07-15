@@ -21,13 +21,13 @@ Untuk memulai dengan Tech Talk Blog, ikuti langkah-langkah berikut:
 
 Tech Talk Blog dibangun menggunakan teknologi-teknologi berikut:
 
-- ![React](https://img.icons8.com/color/20/000000/react-native.png) **React**: Digunakan untuk membangun antarmuka pengguna yang interaktif.
-- ![Vite](https://img.icons8.com/fluency/20/000000/vite.png) **Vite**: Alat pembangunan yang digunakan untuk pengembangan cepat dan efisien.
-- ![Babel](https://img.icons8.com/color/20/000000/babel.png) **Babel**: Transpiler JavaScript yang digunakan dalam plugin @vitejs/plugin-react.
-- ![SWC](https://img.icons8.com/color/20/000000/swc.png) **SWC**: Compiler super cepat yang digunakan dalam plugin @vitejs/plugin-react-swc.
-- ![Node.js](https://img.icons8.com/color/20/000000/nodejs.png) **Node.js**: Lingkungan runtime JavaScript di server.
-- ![Express.js](https://img.icons8.com/color/20/000000/express.png) **Express.js**: Kerangka kerja untuk membangun aplikasi web di Node.js.
-- ![MongoDB](https://img.icons8.com/color/20/000000/mongodb.png) **MongoDB**: Basis data NoSQL yang digunakan untuk menyimpan data.
+[![React Badge](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](#)
+[![Vite Badge](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](#)
+[![Babel Badge](https://img.shields.io/badge/babel-%23F9DC3E.svg?style=for-the-badge&logo=babel&logoColor=black)](#)
+[![SWC Badge](https://img.shields.io/badge/swc-%23CA4245.svg?style=for-the-badge&logo=swc&logoColor=white)](#)
+[![Nodejs Badge](https://img.shields.io/badge/node.js-%23339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)](#)
+[![Express Badge](https://img.shields.io/badge/express-%23000000.svg?style=for-the-badge&logo=express&logoColor=white)](#)
+[![MongoDB Badge](https://img.shields.io/badge/mongodb-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)](#)
 
 
 
