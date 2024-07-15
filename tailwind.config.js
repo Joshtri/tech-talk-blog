@@ -12,7 +12,22 @@ export default {
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        slideIn: {
+          '0%': { transform: 'translateY(10px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-in-out forwards',
+        slideIn: 'slideIn 1s ease-in-out forwards',
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin'),

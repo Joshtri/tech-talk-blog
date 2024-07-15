@@ -2,10 +2,15 @@ import React from 'react'
 
 function Welcome() {
   return (
-    <div>
-        <p className='p-10'>
-        Selamat datang di Personal Blog - Yosry Lenggu, blog ini berisikan tentang berbagai pemikiran saya sendiri yang saya kemas dalam konteks yang aesthetic, bucin, dan tentunya menarik (semoga).
-        </p>
+    <div className="bg-gradient-to-r from-gray-300 to-white text-black py-10">
+      <div className="container mx-auto px-10">
+        <div className="bg-white bg-opacity-20 p-10 rounded-lg shadow-lg transition-opacity duration-1000 ease-in-out opacity-0 animate-fadeIn">
+          <h1 className="text-4xl font-bold mb-4 text-center transition-transform duration-1000 ease-in-out transform translate-y-10 animate-slideIn">Selamat Datang di Tech Talk Blog</h1>
+          <p className="text-lg text-center transition-transform duration-1000 ease-in-out transform translate-y-10 delay-200 animate-slideIn">
+            Platform di mana saya berbagi pemikiran dan mengedukasi semua orang seputaran dunia IT dan bahkan mengenai programming / coding.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

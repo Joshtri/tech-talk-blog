@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from './Layout';
@@ -17,14 +18,16 @@ function Dashboard() {
 
   const getPost = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/post`);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post`);
       setPostItem(response.data);
       console.log(response);
+    
+
     } catch (error) {
       setError(error.message);
     }
   };
-
+  // console.log(import.meta.env.VITE_BASE_URL);
   return (
     <Layout>
       <Welcome />
@@ -32,16 +35,18 @@ function Dashboard() {
         <div className='flex flex-wrap gap-4'>
           {error && <div className="text-red-500">{error}</div>}
           {postItem.map((post) => (
-            <Card key={post._id} className="max-w-sm">
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {post.title}
-              </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
-                {post.body}
-              </p>
+            <Card key={post._id} className="max-w-sm w-80 h-40 flex flex-col justify-between">
+              <div>
+                <h5 className="text-2xl capitalize font-bold tracking-tight text-gray-900 dark:text-white">
+                  {post.title}
+                </h5>
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  {post.body}
+                </p>
+              </div>
               <Link to={`post/${post._id}`}>
-                <Button>
-                  Read more
+                <Button className="mt-auto">
+                  Baca Lanjut
                   <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
                       fillRule="evenodd"
@@ -51,7 +56,6 @@ function Dashboard() {
                   </svg>
                 </Button>
               </Link>
-
             </Card>
           ))}
         </div>
