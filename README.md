@@ -2,10 +2,6 @@
 
 **Tech Talk Blog** merupakan website blog yang dibuat untuk membagikan postingan artikel mengenai dunia programming / coding. Blog ini murni hanya sekedar untuk berbagi ilmu bagi semua pengunjung yang tertarik seputaran IT dan programming /coding.
 
-## Plugins Resmi
-
-Tech Talk Blog mendukung dua plugin resmi berikut untuk pengembangan React:
-
 ## Memulai
 
 Untuk memulai dengan Tech Talk Blog, ikuti langkah-langkah berikut:
