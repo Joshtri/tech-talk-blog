@@ -11,7 +11,7 @@ Tech Talk Blog mendukung dua plugin resmi berikut untuk pengembangan React:
 Untuk memulai dengan Tech Talk Blog, ikuti langkah-langkah berikut:
 
 1. **Kunjungi Website**:
-   Buka [Tech Talk Blog](https://www.techtalkblog.com) di peramban Anda.
+   Buka [Tech Talk Blog](https://tech-talk-blog-rho.vercel.app/) di peramban Anda.
 
 2. **Jelajahi Artikel**:
    Cari dan baca artikel-artikel menarik mengenai dunia programming dan coding.
