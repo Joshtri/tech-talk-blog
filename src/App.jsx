@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import NavbarComp from './components/Navbar'
-import FooterComp from './components/Footer'
 import Dashboard from './pages/Dashboard';
 import PostDetail from './pages/PostDetail';
 import About from './pages/About';
@@ -15,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/about" element={<About/>}/>
-          <Route path="post/:id" element={<PostDetail/>} />
+          <Route path="/post/:id" element={<PostDetail/>} />
 
         </Routes>
       </BrowserRouter>
