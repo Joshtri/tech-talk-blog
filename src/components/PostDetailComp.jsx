@@ -13,13 +13,14 @@ function PostDetailComp() {
   const [content, setContent] = useState("");
   const [createdAt, setCreated] = useState("");
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [comments, setComments] = useState([]);
   const { id } = useParams();
 
   const titlePage = "Postingan";
   useEffect(() => {
     document.title = titlePage;
     getPostById();
+    getCommentsByPostId();
   }, []);
 
   const getPostById = async () => {
@@ -34,6 +35,20 @@ function PostDetailComp() {
       console.error("There was an error fetching the post!", error);
       setLoading(false);
     }
+  };
+
+  const getCommentsByPostId = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/${id}`);
+      console.log('Comments Response:', response.data);
+      setComments(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the comments!", error);
+    }
+  };
+
+  const handleAddComment = (newComment) => {
+    setComments(prevComments => [...prevComments, newComment]);
   };
 
   const handleShareWhatsApp = () => {
@@ -101,8 +116,8 @@ function PostDetailComp() {
 
       {!loading && (
         <>
-          <Comment />
-          <CommentList />
+          <Comment postId={id} onAddComment={handleAddComment} />
+          <CommentList comments={comments} />
         </>
       )}
     </>
