@@ -16,14 +16,14 @@ function Comment({ postId, onAddComment }) {
           comment_user: newComment,
           postId: postId,
         });
-        console.log('Comment added successfully:', response.data);
+        // console.log('Comment added successfully:', response.data);
         onAddComment(response.data);
         setNewComment('');
         setLoading(false);
         toast.success('Komentar berhasil terkirim');
       }
     } catch (error) {
-      console.error('Error adding comment:', error);
+      // console.error('Error adding comment:', error);
       setLoading(false);
     }
   };

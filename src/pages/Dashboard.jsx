@@ -22,7 +22,7 @@ function Dashboard() {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post`);
       setPostItem(response.data);
       setLoading(false);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       setError(error.message);
       setLoading(false);

@@ -7,6 +7,7 @@ import { FiShare2, FiCopy } from "react-icons/fi";
 import { format } from "date-fns";
 import Comment from "./Comment";
 import CommentList from "./CommentList";
+import Subscription from "./Subscription";
 
 function PostDetailComp() {
   const [title, setTitle] = useState("");
@@ -26,7 +27,7 @@ function PostDetailComp() {
   const getPostById = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post/${id}`);
-      console.log('API Response:', response.data);
+      // console.log('API Response:', response.data);
       setTitle(response.data.title);
       setContent(response.data.content);
       setCreated(response.data.createdAt);
@@ -40,7 +41,7 @@ function PostDetailComp() {
   const getCommentsByPostId = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/${id}`);
-      console.log('Comments Response:', response.data);
+      // console.log('Comments Response:', response.data);
       setComments(response.data);
     } catch (error) {
       console.error("There was an error fetching the comments!", error);
@@ -118,6 +119,8 @@ function PostDetailComp() {
         <>
           <Comment postId={id} onAddComment={handleAddComment} />
           <CommentList comments={comments} />
+          
+          <Subscription/>
         </>
       )}
     </>
