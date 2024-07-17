@@ -1,28 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tech Talk Blog</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Talk Blog</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import { createApp } from '/src/main.jsx'; // Sesuaikan dengan path yang sesuai
 
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-        }
-      })(window.location);
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    // Konfigurasi untuk mengatasi 404 error saat merefresh halaman
+    (async () => {
+      const app = createApp();
+      await app.load(); // Jika ada fungsi load async untuk inisialisasi
+
+      // Menangani navigasi agar tetap pada path yang benar
+      const pathSegmentsToKeep = 1;
+      const url = new URL(window.location);
+      const segments = url.pathname.split('/').slice(1, 1 + pathSegmentsToKeep).join('/');
+      const searchParams = new URLSearchParams(url.search.slice(1));
+      for (const key of searchParams.keys()) {
+        searchParams.set(key, searchParams.get(key).replace(/~and~/g, '&'));
+      }
+      history.replaceState({}, '', `${url.protocol}//${url.host}/${segments}/?/${url.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~')}${url.search ? `&${searchParams.toString()}` : ''}${url.hash}`);
+    })();
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
