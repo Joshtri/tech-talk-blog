@@ -49,7 +49,7 @@ function Dashboard() {
             </div>
           ) : (
             postItem.map((post) => (
-              <Card key={post._id} className="max-w-sm w-80 h-40 flex flex-col justify-between">
+              <Card key={post._id} className="max-w-sm w-80 h-50 flex flex-col justify-between">
                 <div>
                   <h5 className="text-2xl capitalize font-bold tracking-tight text-gray-900 dark:text-white">
                     {post.title}
