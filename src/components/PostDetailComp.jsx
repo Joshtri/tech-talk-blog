@@ -80,7 +80,7 @@ function PostDetailComp() {
             </div>
           </Card>
         ) : (
-          <Card className="max-w-5xl w-full p-2 mt-8 mb-7">
+          <Card className="max-w-4xl w-full p-1 mt-8 mb-7">
             <div className="p-2">
               <h1 className="text-3xl capitalize font-bold text-center">{title}</h1>
               <p className="text-center text-gray-600 mt-2">
