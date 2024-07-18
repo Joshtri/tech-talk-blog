@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Card } from "flowbite-react";
 import { MdDateRange } from "react-icons/md";
 import { FiShare2, FiCopy } from "react-icons/fi";
@@ -27,7 +27,6 @@ function PostDetailComp() {
   const getPostById = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post/${id}`);
-      // console.log('API Response:', response.data);
       setTitle(response.data.title);
       setContent(response.data.content);
       setCreated(response.data.createdAt);
@@ -41,7 +40,6 @@ function PostDetailComp() {
   const getCommentsByPostId = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/${id}`);
-      // console.log('Comments Response:', response.data);
       setComments(response.data);
     } catch (error) {
       console.error("There was an error fetching the comments!", error);
@@ -68,9 +66,9 @@ function PostDetailComp() {
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
         {loading ? (
-          <Card className="max-w-4xl p-4 mt-8 mb-7 animate-pulse">
+          <Card className="max-w-4xl w-full p-4 mt-8 mb-7 animate-pulse">
             <div className="p-4">
               <div className="h-8 bg-gray-300 rounded w-3/4 mb-4"></div>
               <div className="h-6 bg-gray-300 rounded w-1/2 mb-4"></div>
@@ -82,8 +80,8 @@ function PostDetailComp() {
             </div>
           </Card>
         ) : (
-          <Card className="max-w-4xl p-1 mt-8 mb-7">
-            <div className="p-4">
+          <Card className="max-w-5xl w-full p-2 mt-8 mb-7">
+            <div className="p-2">
               <h1 className="text-3xl capitalize font-bold text-center">{title}</h1>
               <p className="text-center text-gray-600 mt-2">
                 {createdAt && (
