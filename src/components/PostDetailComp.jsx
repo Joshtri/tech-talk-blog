@@ -11,6 +11,8 @@ import Subscription from './Subscription';
 import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 function PostDetailComp() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

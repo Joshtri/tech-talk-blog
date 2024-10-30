@@ -11,7 +11,7 @@ function Layout({ children }) {
       <React.Fragment>
         <NavbarComp />
         <ToastContainer />
-        <main className='mt-7 mb-7'>{children}</main>
+        <main className=' mb-7'>{children}</main>
         <FooterComp />
         
       </React.Fragment>
