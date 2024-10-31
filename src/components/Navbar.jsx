@@ -7,31 +7,31 @@ import techTalkLogo from '../assets/tech_talk.png';
 function NavbarComp() {
   const [hovered, setHovered] = useState(null);
 
-  // Variants untuk animasi link navigasi
+  // Variants for nav link animations
   const linkVariants = {
     hidden: { y: 0 },
     hover: { y: -5, transition: { type: "spring", stiffness: 300 } },
   };
 
-  // Variants untuk animasi floating navbar
+  // Variants for subtle floating navbar animation
   const floatingVariants = {
     animate: {
-      y: [0, -5, 0], // Pergerakan ke atas dan turun
+      y: [0, -2, 0],
       transition: {
         duration: 3,
         ease: "easeInOut",
-        repeat: Infinity, // Agar animasi terus berjalan
+        repeat: Infinity,
       },
     },
   };
 
   return (
     <motion.div
-      className="rounded-xl shadow-md" // Adjusted shadow and removed padding
+      className="rounded-xl shadow-lg"
       variants={floatingVariants}
       animate="animate"
     >
-      <Navbar fluid rounded className="px-3 mt-3 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 rounded-xl">
+      <Navbar fluid rounded className="px-4 py-2 mt-3 bg-white border border-gray-200 rounded-xl shadow-md">
         <Navbar.Brand href="/">
           <img src={techTalkLogo} className="mr-3 h-12 sm:h-10" alt="Tech Talk Logo" />
         </Navbar.Brand>
@@ -45,7 +45,7 @@ function NavbarComp() {
                 animate={hovered === "home" ? "hover" : "hidden"}
                 onMouseEnter={() => setHovered("home")}
                 onMouseLeave={() => setHovered(null)}
-                className="text-white hover:text-gray-800 transition duration-300"
+                className="text-gray-700 hover:text-blue-600 transition duration-300"
               >
                 Blog
               </motion.div>
@@ -59,7 +59,7 @@ function NavbarComp() {
                 animate={hovered === "about" ? "hover" : "hidden"}
                 onMouseEnter={() => setHovered("about")}
                 onMouseLeave={() => setHovered(null)}
-                className="text-white hover:text-gray-800 transition duration-300"
+                className="text-gray-700 hover:text-blue-600 transition duration-300"
               >
                 About
               </motion.div>

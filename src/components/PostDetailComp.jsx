@@ -17,6 +17,7 @@ function PostDetailComp() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [createdAt, setCreated] = useState('');
+  const [coverImageUrl, setCoverImageUrl] = useState(''); // State for cover image
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const [likeCount, setLikeCount] = useState(0);
@@ -39,6 +40,8 @@ function PostDetailComp() {
       setTitle(response.data.title);
       setContent(response.data.content);
       setCreated(response.data.createdAt);
+      setCoverImageUrl(response.data.coverImageUrl);
+
       setLoading(false);
     } catch (error) {
       console.error('There was an error fetching the post!', error);
@@ -151,6 +154,9 @@ function PostDetailComp() {
           </Card>
         ) : (
           <Card className="max-w-4xl w-full p-1 mt-8 mb-7">
+            {coverImageUrl && (
+              <img src={coverImageUrl} alt="Post Cover" className="w-full h-96 object-cover rounded-t-lg" />
+            )}
             <div className="p-2">
               <h1 className="text-3xl capitalize font-bold text-center">{title}</h1>
               <p className="text-center text-gray-600 mt-2">
