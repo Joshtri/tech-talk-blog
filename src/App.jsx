@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Dashboard from './pages/Dashboard';
+import Main from './pages/MainPage';
 import PostDetail from './pages/PostDetail';
 import About from './pages/About';
 
@@ -11,7 +11,7 @@ function App() {
     <>
       <BrowserRouter basename='/'>
         <Routes>
-          <Route path="/" element={<Dashboard/>}/>
+          <Route path="/" element={<Main/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/post/:id" element={<PostDetail/>} />
 

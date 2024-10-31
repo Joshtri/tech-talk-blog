@@ -6,7 +6,7 @@ import { Button, Card } from "flowbite-react";
 import Welcome from '../components/Welcome';
 import { Link } from 'react-router-dom';
 
-function Dashboard() {
+function Main() {
   const [postItem, setPostItem] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -86,4 +86,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Main;
