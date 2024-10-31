@@ -10,6 +10,7 @@ import CommentList from './CommentList';
 import Subscription from './Subscription';
 import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ShareButton from './ReadPost/ShareButton';
 
 
 
@@ -231,18 +232,20 @@ function PostDetailComp() {
                   </button>
 
                   {/* ToastContainer untuk menampilkan notifikasi */}
-                  <ToastContainer />
+                  {/* <ToastContainer /> */}
                 </div>
               </div>
               <div className='flex justify-center mt-4 space-x-2'>
                 <div className=''>
-                  <button
+
+                  <ShareButton/>
+                  {/* <button
                     className="px-3 py-1 rounded-md bg-green-400 text-white hover:bg-green-600 hover:text-gray-100 font-semibold flex items-center"
                     onClick={handleShareWhatsApp}
                     >
                     <FiShare2 className="inline-block mr-1" />
                     Share WhatsApp
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

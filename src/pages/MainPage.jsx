@@ -35,20 +35,27 @@ function Main() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {error && <div className="text-red-500">{error}</div>}
           {loading ? (
-            <div className="flex flex-wrap gap-4">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <Card key={index} className="max-w-sm w-80 h-40 flex flex-col justify-between animate-pulse">
-                  <div>
-                    <div className="h-5 bg-gray-300 rounded w-3/4 mb-4"></div>
-                    <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                    <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+            Array.from({ length: 3 }).map((_, index) => (
+              <Card key={index} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
+                {/* Skeleton for image */}
+                <div className="w-full h-48 bg-gray-300"></div>
+                
+                {/* Skeleton for content */}
+                <div className="p-4 flex flex-col flex-grow">
+                  <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div> {/* Title skeleton */}
+                  <div className="h-4 bg-gray-300 rounded w-full mb-2"></div> {/* Line 1 of description */}
+                  <div className="h-4 bg-gray-300 rounded w-5/6 mb-4"></div> {/* Line 2 of description */}
+                  
+                  {/* Skeleton for button */}
+                  <div className="mt-auto">
+                    <div className="h-10 bg-gray-300 rounded w-full"></div>
                   </div>
-                </Card>
-              ))}
-            </div>
+                </div>
+              </Card>
+            ))
           ) : (
             postItem.map((post) => (
-              <Card key={post._id} className="max-w-sm w-80 flex flex-col justify-between shadow-lg rounded-lg overflow-hidden">
+              <Card key={post._id} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden">
                 {/* Display the cover image if available */}
                 {post.coverImageUrl && (
                   <img
