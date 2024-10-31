@@ -18,7 +18,7 @@ function NavbarComp() {
     animate: {
       y: [0, -2, 0],
       transition: {
-        duration: 3,
+        duration: 5,
         ease: "easeInOut",
         repeat: Infinity,
       },
