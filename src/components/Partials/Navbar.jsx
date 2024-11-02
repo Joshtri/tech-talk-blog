@@ -79,6 +79,20 @@ function NavbarComp() {
               </motion.div>
             </NavLink>
           </Navbar.Link>
+          <Navbar.Link>
+            <NavLink to="/games" className="text-lg">
+              <motion.div
+                variants={linkVariants}
+                initial="hidden"
+                animate={hovered === "games" ? "hover" : "hidden"}
+                onMouseEnter={() => setHovered("games")}
+                onMouseLeave={() => setHovered(null)}
+                className="text-gray-700 hover:text-blue-600 transition duration-300"
+              >
+                Games
+              </motion.div>
+            </NavLink>
+          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </motion.div>
