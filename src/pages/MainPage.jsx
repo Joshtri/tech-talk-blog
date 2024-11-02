@@ -36,16 +36,17 @@ function Main() {
           {error && <div className="text-red-500">{error}</div>}
           {loading ? (
             Array.from({ length: 3 }).map((_, index) => (
-              <Card key={index} className="w-full flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
+              <Card key={index} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
+                {/* Skeleton for image */}
                 {/* Skeleton for image */}
                 <div className="w-full h-48 bg-gray-300"></div>
-
+                
                 {/* Skeleton for content */}
                 <div className="p-4 flex flex-col flex-grow">
                   <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div> {/* Title skeleton */}
                   <div className="h-4 bg-gray-300 rounded w-full mb-2"></div> {/* Line 1 of description */}
                   <div className="h-4 bg-gray-300 rounded w-5/6 mb-4"></div> {/* Line 2 of description */}
-
+                  
                   {/* Skeleton for button */}
                   <div className="mt-auto">
                     <div className="h-10 bg-gray-300 rounded w-full"></div>
