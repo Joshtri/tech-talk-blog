@@ -31,21 +31,21 @@ function Main() {
   return (
     <Layout>
       <Welcome />
-      <div className="flex justify-center p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="flex justify-center px-4 py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full">
           {error && <div className="text-red-500">{error}</div>}
           {loading ? (
             Array.from({ length: 3 }).map((_, index) => (
-              <Card key={index} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
+              <Card key={index} className="w-full flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
                 {/* Skeleton for image */}
                 <div className="w-full h-48 bg-gray-300"></div>
-                
+
                 {/* Skeleton for content */}
                 <div className="p-4 flex flex-col flex-grow">
                   <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div> {/* Title skeleton */}
                   <div className="h-4 bg-gray-300 rounded w-full mb-2"></div> {/* Line 1 of description */}
                   <div className="h-4 bg-gray-300 rounded w-5/6 mb-4"></div> {/* Line 2 of description */}
-                  
+
                   {/* Skeleton for button */}
                   <div className="mt-auto">
                     <div className="h-10 bg-gray-300 rounded w-full"></div>
@@ -55,7 +55,7 @@ function Main() {
             ))
           ) : (
             postItem.map((post) => (
-              <Card key={post._id} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden">
+              <Card key={post._id} className="w-full flex flex-col shadow-lg rounded-lg overflow-hidden">
                 {/* Display the cover image if available */}
                 {post.coverImageUrl && (
                   <img
