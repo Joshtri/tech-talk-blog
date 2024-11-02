@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from "flowbite-react";
 import { NavLink } from 'react-router-dom';
-import techTalkLogo from '../assets/tech_talk.png';
+import techTalkLogo from '../../assets/tech_talk.png';
 
 function NavbarComp() {
   const [hovered, setHovered] = useState(null);
@@ -62,6 +62,20 @@ function NavbarComp() {
                 className="text-gray-700 hover:text-blue-600 transition duration-300"
               >
                 About
+              </motion.div>
+            </NavLink>
+          </Navbar.Link>
+          <Navbar.Link>
+            <NavLink to="/news" className="text-lg">
+              <motion.div
+                variants={linkVariants}
+                initial="hidden"
+                animate={hovered === "news" ? "hover" : "hidden"}
+                onMouseEnter={() => setHovered("news")}
+                onMouseLeave={() => setHovered(null)}
+                className="text-gray-700 hover:text-blue-600 transition duration-300"
+              >
+                News
               </motion.div>
             </NavLink>
           </Navbar.Link>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import NavbarComp from '../components/Navbar'
-import FooterComp from '../components/Footer';
+import NavbarComp from '../components/Partials/Navbar'
+import FooterComp from '../components/Partials/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
