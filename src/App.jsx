@@ -5,6 +5,7 @@ import Main from './pages/MainPage';
 import PostDetail from './pages/PostDetail';
 import About from './pages/About';
 import NewsPage from './pages/NewsPage';
+import GamesPage from './pages/GamesPage';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Main/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/post/:id" element={<PostDetail/>} />
+          <Route path='/games' element={<GamesPage/>}/>
 
           <Route path='/news' element={<NewsPage/>}/>
 
