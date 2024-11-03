@@ -7,6 +7,7 @@ import About from './pages/About';
 import NewsPage from './pages/NewsPage';
 import GamesPage from './pages/GamesPage';
 import { HelmetProvider } from 'react-helmet-async';
+import VoiceLabPage from './pages/VoiceLabPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path='/games' element={<GamesPage/>}/>
 
             <Route path='/news' element={<NewsPage/>}/>
+            <Route path='/voice-labs' element={<VoiceLabPage/>}/>
 
           </Routes>
         </BrowserRouter>

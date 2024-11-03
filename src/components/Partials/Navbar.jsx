@@ -93,6 +93,36 @@ function NavbarComp() {
               </motion.div>
             </NavLink>
           </Navbar.Link>
+
+          <Navbar.Link>
+
+          <NavLink to="/voice-labs" className="text-lg">
+            <motion.div
+              variants={linkVariants}
+              initial="hidden"
+              animate={hovered === "voice" ? "hover" : "hidden"}
+              onMouseEnter={() => setHovered("voice")}
+              onMouseLeave={() => setHovered(null)}
+              className="text-gray-700 hover:text-blue-600 transition duration-300"
+            >
+              Voice Lab
+            </motion.div>
+          </NavLink>
+
+          {/* <NavLink to="/voice" className="text-lg">
+            <motion.div
+              variants={linkVariants}
+              initial="hidden"
+              animate={hovered === "voice" ? "hover" : "hidden"}
+              onMouseEnter={() => setHovered("voice")}
+              onMouseLeave={() => setHovered(null)}
+              className="text-gray-700 hover:text-blue-600 transition duration-300"
+            >
+              CS Hub
+            </motion.div>
+          </NavLink> */}
+        </Navbar.Link>
+
         </Navbar.Collapse>
       </Navbar>
     </motion.div>
