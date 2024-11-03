@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from './Layout';
-import AboutComp from '../components/AboutComp';
+import AboutComp from '../components/About/AboutComp';
 
 function About() {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from './Layout';
-import PostDetailComp from '../components/PostDetailComp';
+import PostDetailComp from '../components/ReadPost/ReadPost';
 
 function PostDetail() {
   useEffect(() => {

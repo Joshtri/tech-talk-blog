@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import { AiFillInstagram, AiFillFacebook, AiFillGithub, AiOutlineTwitter, AiOutlineX } from 'react-icons/ai'; // Import icons from react-icons
 
 import techTalkLogo from '../../assets/tech_talk.png';
-import CardDonation from '../CardDonation';
+import CardDonation from './CardDonation';
 
 function FooterComp() {
   const [modalIsOpen, setModalIsOpen] = useState(false);

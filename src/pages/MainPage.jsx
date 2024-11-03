@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from './Layout';
 import { Button, Card } from "flowbite-react";
-import Welcome from '../components/Welcome';
+import Welcome from '../components/Main/Welcome';
 import { Link } from 'react-router-dom';
 
 function Main() {

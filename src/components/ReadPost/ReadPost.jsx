@@ -5,10 +5,10 @@ import { Card } from 'flowbite-react';
 import { MdDateRange } from 'react-icons/md';
 import { format } from 'date-fns';
 import { FiCopy, FiHeart } from 'react-icons/fi';
-import Comment from './Comment';
-import CommentList from './CommentList';
-import Subscription from './Subscription';
-import ShareButton from './ReadPost/ShareButton';
+import Comment from '../Comment';
+import CommentList from '../CommentList';
+import Subscription from '../Subscription';
+import ShareButton from './ShareButton';
 
 import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
