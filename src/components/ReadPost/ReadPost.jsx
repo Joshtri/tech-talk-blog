@@ -118,20 +118,17 @@ function PostDetailComp() {
     <>
       {post && (
         <Helmet>
-          <title>{post.title} - Nama Situs Anda</title>
-          <meta name="description" content={post.summary || 'Deskripsi default'} />
+          <title>{post.title} - Tech Talk Blog</title>
+          <meta name="description" content={post.summary || 'Deskripsi default untuk postingan.'} />
           <meta property="og:title" content={post.title} />
-          <meta property="og:description" content={post.summary || 'Deskripsi default'} />
+          <meta property="og:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
           <meta property="og:image" content={post.coverImageUrl} />
-          <meta property="og:url" content={`https://your-site.com/post/${post.slug}`} />
+          <meta property="og:url" content={`https://tech-talks-blog.com/post/${post.slug}`} />
           <meta property="og:type" content="article" />
-
-          {/* Meta tag Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={post.title} />
-          <meta name="twitter:description" content={post.summary || 'Deskripsi default'} />
+          <meta name="twitter:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
           <meta name="twitter:image" content={post.coverImageUrl} />
-          <meta name="twitter:site" content="@YourTwitterHandle" />
         </Helmet>
       )}
       <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
