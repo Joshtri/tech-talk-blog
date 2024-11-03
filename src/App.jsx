@@ -6,22 +6,26 @@ import PostDetail from './pages/PostDetail';
 import About from './pages/About';
 import NewsPage from './pages/NewsPage';
 import GamesPage from './pages/GamesPage';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 function App() {
   
   return (
     <>
-      <BrowserRouter basename='/'>
-        <Routes>
-          <Route path="/" element={<Main/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/post/:slug" element={<PostDetail/>} />
-          <Route path='/games' element={<GamesPage/>}/>
+      <HelmetProvider>
+        <BrowserRouter basename='/'>
+          <Routes>
+            <Route path="/" element={<Main/>}/>
+            <Route path="/about" element={<About/>}/>
+            <Route path="/post/:slug" element={<PostDetail/>} />
+            <Route path='/games' element={<GamesPage/>}/>
 
-          <Route path='/news' element={<NewsPage/>}/>
+            <Route path='/news' element={<NewsPage/>}/>
 
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </HelmetProvider>
     </>
   )
 }

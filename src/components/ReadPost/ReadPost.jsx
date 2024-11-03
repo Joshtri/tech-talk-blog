@@ -9,6 +9,8 @@ import Comment from '../Comment';
 import CommentList from '../CommentList';
 import Subscription from '../Subscription';
 import ShareButton from './ShareButton';
+import { Helmet } from 'react-helmet-async';
+
 
 import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -114,6 +116,24 @@ function PostDetailComp() {
 
   return (
     <>
+      {post && (
+        <Helmet>
+          <title>{post.title} - Nama Situs Anda</title>
+          <meta name="description" content={post.summary || 'Deskripsi default'} />
+          <meta property="og:title" content={post.title} />
+          <meta property="og:description" content={post.summary || 'Deskripsi default'} />
+          <meta property="og:image" content={post.coverImageUrl} />
+          <meta property="og:url" content={`https://your-site.com/post/${post.slug}`} />
+          <meta property="og:type" content="article" />
+
+          {/* Meta tag Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={post.title} />
+          <meta name="twitter:description" content={post.summary || 'Deskripsi default'} />
+          <meta name="twitter:image" content={post.coverImageUrl} />
+          <meta name="twitter:site" content="@YourTwitterHandle" />
+        </Helmet>
+      )}
       <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
         {loading ? (
           // Skeleton loading saat data sedang dimuat
@@ -148,6 +168,7 @@ function PostDetailComp() {
           </Card>
         ) : (
           post && (
+            
             <Card className="max-w-4xl w-full p-4 mt-8 mb-7">
               {post.coverImageUrl && (
                 <img
