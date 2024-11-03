@@ -2,7 +2,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { Button } from 'flowbite-react'; // Mengimpor Button dari flowbite-react
-import saweriaMe from '../assets/saweria_yostry.png';
+import saweriaMe from '../../assets/saweria_yostry.png';
 
 const CardDonation = ({ isOpen, onRequestClose }) => {
   return (
