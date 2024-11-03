@@ -1,22 +1,42 @@
 import React from 'react';
-import { Card } from 'flowbite-react';
+import useSWR from 'swr';
+import axios from 'axios';
 import { AiOutlineAudio } from 'react-icons/ai';
+import { FaUser } from 'react-icons/fa';
 
-function VoiceMessageList({ messages }) {
+const fetcher = (url) => axios.get(url).then((res) => res.data.data);
+
+function VoiceMessageList() {
+  const { data: messages, error } = useSWR(`${import.meta.env.VITE_BASE_URL}/api/voice`, fetcher, {
+    refreshInterval: 5000, // Optional: refresh data every 5 seconds
+  });
+
+  if (error) return <p className="text-red-500">Failed to load voice messages.</p>;
+  if (!messages) return <p className="text-gray-500">Loading voice messages...</p>;
+
   return (
-    <div>
+    <div className="max-w-3xl mx-auto mt-4">
       {messages.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="space-y-4">
           {messages.map((message, index) => (
-            <Card key={index} className="p-4 flex items-center space-x-3">
-              <AiOutlineAudio className="h-6 w-6 text-gray-700" />
-              <div>
-                <p className="text-lg font-medium">{message}</p>
-                <button className="mt-2 bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
-                  Play
-                </button>
+            <div key={message._id} className="chat-message">
+              <div className="flex items-end">
+                <FaUser className="w-8 h-8 text-gray-500 order-1" />
+                <div className="flex flex-col space-y-2 text-sm mx-2 order-2 items-start w-full">
+                  <div>
+                    <div className="px-6 py-4 rounded-lg inline-block bg-gray-200 text-gray-800 w-full">
+                      <div className="flex items-center space-x-2">
+                        <AiOutlineAudio className="h-5 w-5 text-gray-700" />
+                        <span className="font-medium">Voice Message {index + 1}</span>
+                      </div>
+                      <audio controls src={message.voiceUrl} className="mt-2 w-full">
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       ) : (
