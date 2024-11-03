@@ -72,7 +72,7 @@ function Main() {
                   <p className="font-normal text-gray-700 dark:text-gray-400 mb-4">
                     {post.description?.slice(0, 65)}{post.description?.length > 65 && '...'}
                   </p>
-                  <Link to={`post/${post._id}`} className="mt-auto">
+                  <Link to={`post/${post.slug}`} className="mt-auto">
                     <Button className="w-full">
                       Baca Lanjut
                       <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -84,6 +84,7 @@ function Main() {
                       </svg>
                     </Button>
                   </Link>
+
                 </div>
               </Card>
             ))
