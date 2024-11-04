@@ -64,10 +64,10 @@ function RecorderControls({ onNewMessage }) {
       <Button
         onClick={handleRecordToggle}
         color={recording ? 'failure' : 'primary'}
-        className="flex items-center space-x-2"
+        className="flex items-center space-x-2 dark:text-gray-200"
       >
         <FiMic className="h-5 w-5" />
-        <span>{recording ? 'Stop Recording' : 'Start Recording'}</span>
+        <span >{recording ? 'Stop Recording' : 'Start Recording'}</span>
       </Button>
       <Button
         onClick={() => {

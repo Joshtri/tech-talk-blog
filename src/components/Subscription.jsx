@@ -51,7 +51,7 @@ function Subscription() {
 
   return (
     <div className="p-4 max-w-sm mx-auto  mt-6">
-      <h2 className="text-2xl font-bold mb-4 text-center">
+      <h2 className="text-2xl font-bold mb-4 text-center dark:text-gray-200">
         Mau dapat email setiap ada postingan baru?
       </h2>
       <div className="mb-4">

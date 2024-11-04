@@ -50,14 +50,14 @@ function News() {
 
     return (
         <div className="p-4 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Latest Technology News</h2>
-            <div className={`p-4 shadow-md transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-white' : 'relative'}`}>
+            <h2 className="text-2xl font-bold mb-4 dark:text-gray-300">Latest Technology News</h2>
+            <div className={`p-4 shadow-md transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-700' : 'relative'}`}>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {Object.entries(sources).map(([name, url]) => (
                         <button
                             key={name}
                             onClick={() => handleSourceChange(url)}
-                            className={`px-4 py-2 rounded-md border ${selectedSource === url ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
+                            className={`px-4 py-2 rounded-md border ${selectedSource === url ? 'bg-blue-600 text-white' : 'bg-gray-200  text-gray-800 hover:bg-gray-300'}`}
                         >
                             {name}
                         </button>
@@ -68,7 +68,7 @@ function News() {
             <div className={`${isSticky ? 'mt-24' : 'mt-8'} space-y-6`}>
                 {loading ? (
                     Array.from({ length: 3 }).map((_, index) => (
-                        <div key={index} className="flex flex-col md:flex-row bg-gray-200 rounded-lg shadow-md border border-gray-300 overflow-hidden animate-pulse">
+                        <div key={index} className="flex flex-col md:flex-row bg-gray-200 dark:bg-gray-700 rounded-lg shadow-md border border-gray-300 overflow-hidden animate-pulse">
                             <div className="w-full md:w-1/3 h-48 bg-gray-300"></div> {/* Skeleton untuk gambar */}
                             <div className="p-4 flex flex-col w-full md:w-2/3">
                                 <div className="h-6 bg-gray-300 rounded mb-2 w-3/4"></div> {/* Skeleton untuk judul */}
@@ -80,7 +80,7 @@ function News() {
                     ))
                 ) : (
                     newsItems.map((item, index) => (
-                        <div key={index} className="flex flex-col md:flex-row bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden">
+                        <div key={index} className="flex flex-col md:flex-row bg-white dark:bg-gray-300  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden">
                             {item.thumbnail && (
                                 <img src={item.thumbnail} alt={item.title} className="w-full md:w-1/3 h-48 md:h-full object-cover" />
                             )}

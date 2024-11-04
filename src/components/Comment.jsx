@@ -39,8 +39,8 @@ function Comment({ postId, onAddComment }) {
   };
 
   return (
-    <div className="bg-gray-100 p-4 max-w-4xl mx-auto mt-5 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Beri Komentar</h2>
+    <div className="bg-gray-100 dark:bg-gray-800 p-4 max-w-4xl mx-auto mt-5 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">Beri Komentar</h2>
       <div className="mb-4">
         <textarea
           className="w-full p-2 rounded-lg border border-gray-300"

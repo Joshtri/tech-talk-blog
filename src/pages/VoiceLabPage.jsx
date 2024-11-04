@@ -62,7 +62,7 @@ function VoiceLabPage() {
         {activeFeature === 'voiceMessage' && (
           <>
             <RecorderControls onNewMessage={handleNewMessage} />
-            <h2 className="text-2xl font-semibold mb-4">Voice Messages</h2>
+            <h2 className="text-2xl font-semibold mb-4 dark:text-gray-200">Voice Messages</h2>
             <VoiceMessageList />
           </>
         )}

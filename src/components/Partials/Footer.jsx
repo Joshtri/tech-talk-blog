@@ -49,12 +49,12 @@ function FooterComp() {
                 </a>
               </Footer.Link>
               <Footer.Link>
-                <a href="https://github.com/Joshtri" target="_blank" rel="noopener noreferrer" className='text-slate-950 text-2xl'>
+                <a href="https://github.com/Joshtri" target="_blank" rel="noopener noreferrer" className='text-slate-950 dark:text-gray-200 text-2xl'>
                   <AiFillGithub />
                 </a>
               </Footer.Link>
               <Footer.Link>
-                <a href="https://x.com/yosry_lenggu" target="_blank" rel="noopener noreferrer" className='text-slate-950 text-2xl'>
+                <a href="https://x.com/yosry_lenggu" target="_blank" rel="noopener noreferrer" className='text-slate-950 dark:text-gray-200 text-2xl'>
                   <AiOutlineX />
                 </a>
               </Footer.Link>

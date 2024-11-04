@@ -131,7 +131,7 @@ function PostDetailComp() {
           <meta name="twitter:image" content={post.coverImageUrl} />
         </Helmet>
       )}
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-700 px-4">
         {loading ? (
           // Skeleton loading saat data sedang dimuat
           <Card className="max-w-4xl w-full p-4 mt-8 mb-7">
@@ -175,14 +175,14 @@ function PostDetailComp() {
                 />
               )}
               <div className="p-2">
-                <h1 className="text-3xl font-bold text-center">{post.title}</h1>
-                <p className="text-center text-gray-600 mt-2">
+                <h1 className="text-3xl font-bold text-center dark:text-gray-200">{post.title}</h1>
+                <p className="text-center text-gray-600 mt-2 dark:text-gray-300">
                   <MdDateRange className="inline-block mr-2" />
                   {format(new Date(post.createdAt), 'MMMM dd, yyyy')}
                 </p>
                 <hr className="mt-3" />
                 <div
-                  className="mt-4 text-justify"
+                  className="mt-4 text-justify dark:text-gray-200"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
