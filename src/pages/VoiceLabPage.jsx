@@ -8,6 +8,7 @@ import TextToSpeechFeature from '../components/VoiceLabs/TextToSpeech/TextToSpee
 import SpeechToTextFeature from '../components/VoiceLabs/SpeechToText/SpeechToTextFeature';
 import VoiceEffectsFeature from '../components/VoiceLabs/VoiceEffects/VoiceEffectsFeature';
 import { isInstagramApp } from '../utils/deviceHelpers';
+import { FaChrome } from 'react-icons/fa6';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data.data);
 
@@ -76,17 +77,18 @@ function VoiceLabPage() {
           size="md"
           className="text-center"
         >
-          <Modal.Header>Buka di Browser</Modal.Header>
+          <Modal.Header>Buka di Browser <FaChrome/></Modal.Header>
           <Modal.Body>
             <div className="flex flex-col items-center">
               <p className="text-gray-600 mb-4">
-                Untuk pengalaman terbaik, buka halaman ini di browser default Anda.
+                Fitur ini hanya dapat diakses pada web browser Chrome <FaChrome/>, 
+                Untuk pengalaman terbaik, buka halaman ini di browser chrome Anda.
               </p>
               <button
                 onClick={handleOpenInBrowser}
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg"
               >
-                Buka di Browser
+                Buka di Browser Chrome <FaChrome/>
               </button>
             </div>
           </Modal.Body>
