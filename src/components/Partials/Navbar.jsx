@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import techTalkLogo from '../../assets/tech_talk.png';
 
+
+
 function NavbarComp() {
   const [hovered, setHovered] = useState(null);
   const [theme, setTheme] = useState(
