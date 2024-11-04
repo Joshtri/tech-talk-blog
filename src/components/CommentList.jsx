@@ -19,6 +19,7 @@ function CommentList({ comments }) {
       ) : (
         <p className="text-gray-500">Belum ada komentar.</p>
       )}
+    
     </div>
   );
 }

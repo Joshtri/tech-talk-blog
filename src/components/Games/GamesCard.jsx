@@ -3,7 +3,7 @@ import React from 'react';
 function Games() {
     return (
         <div className="p-4 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Mbul Adventure</h2>
+            <h2 className="text-2xl dark:text-gray-300 font-bold mb-4">Mbul Adventure</h2>
             <div className="bg-white text-black rounded-lg shadow-md p-2 flex flex-col items-center">
                 <img 
                     src="https://img.itch.zone/aW1nLzg4NDU2NDUuanBn/315x250%23c/ft3M1p.jpg" 

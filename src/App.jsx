@@ -25,6 +25,7 @@ function App() {
             <Route path='/news' element={<NewsPage/>}/>
             <Route path='/voice-labs' element={<VoiceLabPage/>}/>
 
+    
           </Routes>
         </BrowserRouter>
       </HelmetProvider>
