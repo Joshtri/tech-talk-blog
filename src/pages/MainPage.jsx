@@ -1,5 +1,5 @@
   /* eslint-disable no-undef */
-  import React, { useEffect, useState } from 'react';
+  import  { useEffect, useState } from 'react';
   import axios from 'axios';
   import Layout from './Layout';
   import { Button, Card } from "flowbite-react";

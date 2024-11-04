@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Card, Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 

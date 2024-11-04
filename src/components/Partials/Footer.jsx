@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Footer } from "flowbite-react";
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
-import { AiFillInstagram, AiFillFacebook, AiFillGithub, AiOutlineTwitter, AiOutlineX } from 'react-icons/ai'; // Import icons from react-icons
+// import Modal from 'react-modal';
+import { AiFillInstagram, AiFillFacebook, AiFillGithub, AiOutlineX } from 'react-icons/ai'; // Import icons from react-icons
 
 import techTalkLogo from '../../assets/tech_talk.png';
 import CardDonation from './CardDonation';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { Button } from 'flowbite-react';
 import { FiMic, FiSend } from 'react-icons/fi';

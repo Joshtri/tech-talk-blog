@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,6 +11,7 @@ function Subscription() {
   const handleSubscribe = async () => {
     setLoading(true); // Set loading true saat proses dimulai
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/subscription`, {
         email_subscription: email,
         whats_app_subscription: whatsapp

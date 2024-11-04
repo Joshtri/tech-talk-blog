@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import axios from 'axios';
 import Layout from './Layout';
