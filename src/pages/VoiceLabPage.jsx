@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import axios from 'axios';
 import Layout from './Layout';
-import { Card } from 'flowbite-react';
+import { Card, Modal } from 'flowbite-react';
 import FeatureTabs from '../components/VoiceLabs/VoiceFeaturesTab';
-import VoiceMessageFeature from '../components/VoiceLabs/VoiceMessage/VoiceMessageFeature';
 import TextToSpeechFeature from '../components/VoiceLabs/TextToSpeech/TextToSpeechFeature';
 import SpeechToTextFeature from '../components/VoiceLabs/SpeechToText/SpeechToTextFeature';
 import VoiceEffectsFeature from '../components/VoiceLabs/VoiceEffects/VoiceEffectsFeature';
@@ -12,21 +11,21 @@ import { isInstagramApp } from '../utils/deviceHelpers';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data.data);
 
+const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-// // Function to detect if user is on an iOS device
-// const isIOS = () => {
-//   return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-// };
+const openInChromeAndroid = () => {
+  const url = `${window.location.origin}/voice-labs`;
+  window.location.href = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+};
 
-// // Function to generate intent URL for Android Chrome
-// const getChromeIntent = () => {
-//   return `intent://your-website.com/voice-labs#Intent;scheme=https;package=com.android.chrome;end`;
-// };
+const openInDefaultBrowser = () => {
+  const url = `${window.location.origin}/voice-labs`;
+  window.open(url, '_blank');
+};
 
 function VoiceLabPage() {
   const { data: voiceMessages, error } = useSWR(`${import.meta.env.VITE_BASE_URL}/api/voice`, fetcher);
   const [activeFeature, setActiveFeature] = useState('textToSpeech');
-
   const [showOpenInBrowser, setShowOpenInBrowser] = useState(false);
 
   useEffect(() => {
@@ -35,13 +34,16 @@ function VoiceLabPage() {
     }
   }, []);
 
-  const openInBrowser = () => {
-    const url = `${window.location.origin}/voice-labs`;
-    window.open(url, '_blank');
-  };
-
   const handleNewMessage = (newMessage) => {
     mutate(`${import.meta.env.VITE_BASE_URL}/api/voice`, (messages) => [newMessage, ...messages], false);
+  };
+
+  const handleOpenInBrowser = () => {
+    if (isIOS()) {
+      openInDefaultBrowser();
+    } else {
+      openInChromeAndroid();
+    }
   };
 
   if (error) return <p className="text-red-500">Failed to load voice messages.</p>;
@@ -61,26 +63,35 @@ function VoiceLabPage() {
         <FeatureTabs activeFeature={activeFeature} setActiveFeature={setActiveFeature} />
         <hr />
 
-        {/* {activeFeature === 'voiceMessage' && <VoiceMessageFeature onNewMessage={handleNewMessage} />} */}
         {activeFeature === 'textToSpeech' && <TextToSpeechFeature />}
         {activeFeature === 'speechToText' && <SpeechToTextFeature />}
         {activeFeature === 'voiceEffects' && <VoiceEffectsFeature />}
       </div>
 
-
+      {/* Modal untuk Peringatan "Buka di Browser" */}
       {showOpenInBrowser && (
-          <div className="mb-4 text-center">
-            <button
-              onClick={openInBrowser}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg"
-            >
-              Buka di Browser
-            </button>
-            <p className="mt-2 text-gray-600">
-              Untuk pengalaman terbaik, buka halaman ini di browser default Anda.
-            </p>
-          </div>
-        )}
+        <Modal
+          show={showOpenInBrowser}
+          onClose={() => setShowOpenInBrowser(false)}
+          size="md"
+          className="text-center"
+        >
+          <Modal.Header>Buka di Browser</Modal.Header>
+          <Modal.Body>
+            <div className="flex flex-col items-center">
+              <p className="text-gray-600 mb-4">
+                Untuk pengalaman terbaik, buka halaman ini di browser default Anda.
+              </p>
+              <button
+                onClick={handleOpenInBrowser}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+              >
+                Buka di Browser
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
+      )}
     </Layout>
   );
 }
