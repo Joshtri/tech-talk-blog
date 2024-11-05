@@ -57,7 +57,7 @@ function VoiceLabPage() {
         <Card className="mb-6 p-4 bg-yellow-100 border-l-4 border-yellow-500">
           <div className="flex items-center">
             <span className="mr-2 text-yellow-500">🚧</span>
-            <p className="text-yellow-700">Fitur ini sedang dibangun dan bersifat eksperimental. Masukan Anda sangat kami hargai!</p>
+            <p className="text-yellow-400">Fitur ini sedang dibangun dan bersifat eksperimental. Masukan Anda sangat kami hargai!</p>
           </div>
         </Card>
 
