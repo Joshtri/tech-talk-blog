@@ -20,7 +20,23 @@ function Main() {
   const getPost = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post`);
-      setPostItem(response.data);
+      const posts = response.data;
+
+      // Fetch comment count for each post and add it to the post data
+      const postsWithComments = await Promise.all(
+        posts.map(async (post) => {
+          try {
+            const commentResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/count/${post._id}`);
+            console.log('value id' + post._id);
+            return { ...post, commentsCount: commentResponse.data };
+          } catch (error) {
+            console.error(`Failed to fetch comments for post ${post._id}:`, error);
+            return { ...post, commentsCount: 0 }; // Default to 0 if there's an error
+          }
+        })
+      );
+
+      setPostItem(postsWithComments);
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -65,16 +81,14 @@ function Main() {
                   <p className="font-normal text-gray-700 dark:text-gray-400 mb-4">
                     {post.description?.slice(0, 65)}{post.description?.length > 65 && '...'}
                   </p>
-                  <div className="flex items-center justify-between mb-4">
-                    {/* Comment count */}
+                  <div className="flex items-center justify-between mt-auto mb-4">
                     <div className="flex items-center text-gray-600 dark:text-gray-100">
-                      <FaCommentDots className="mr-2" />
-                      <span>{post.comments ? post.comments.length : 0} Komentar</span>
+                      <FaCommentDots className="mr-1" />
+                      <span className="text-sm">{post.commentsCount || 0} Komentar</span>
                     </div>
-                    {/* Share button */}
-                    <button className="flex items-center text-blue-600 dark:text-gray-200 hover:text-blue-800">
-                      <FaShareAlt className="mr-2" />
-                      Bagikan
+                    <button className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800">
+                      <FaShareAlt className="mr-1" />
+                      <span className="text-sm">Bagikan</span>
                     </button>
                   </div>
                   <Link to={`post/${post.slug}`} className="mt-auto">
