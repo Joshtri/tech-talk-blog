@@ -67,12 +67,12 @@ function Main() {
                   </p>
                   <div className="flex items-center justify-between mb-4">
                     {/* Comment count */}
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-gray-600 dark:text-gray-100">
                       <FaCommentDots className="mr-2" />
                       <span>{post.comments ? post.comments.length : 0} Komentar</span>
                     </div>
                     {/* Share button */}
-                    <button className="flex items-center text-blue-600 hover:text-blue-800">
+                    <button className="flex items-center text-blue-600 dark:text-gray-200 hover:text-blue-800">
                       <FaShareAlt className="mr-2" />
                       Bagikan
                     </button>

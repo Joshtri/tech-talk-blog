@@ -1,9 +1,0 @@
-.wave-animation {
-    animation: wave 1s infinite ease-in-out;
-  }
-  
-  @keyframes wave {
-    0%, 100% { width: 20px; }
-    50% { width: 40px; }
-  }
-  

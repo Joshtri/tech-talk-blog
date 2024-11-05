@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Button } from 'flowbite-react';
+import '../../VoiceLabs/wave-anim.css'
+
 
 function SpeechToTextControls({ onTranscription }) {
   const [isRecording, setIsRecording] = useState(false);
@@ -9,7 +11,6 @@ function SpeechToTextControls({ onTranscription }) {
   const handleStartRecording = () => {
     setIsRecording(true);
 
-    // Periksa dukungan Web Speech API
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
@@ -18,13 +19,11 @@ function SpeechToTextControls({ onTranscription }) {
       return;
     }
 
-    // Inisialisasi objek SpeechRecognition
     recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.lang = 'id-ID'; // Set bahasa ke Indonesia
+    recognitionRef.current.lang = 'id-ID';
     recognitionRef.current.continuous = false;
     recognitionRef.current.interimResults = false;
 
-    // Event handler untuk hasil transkripsi
     recognitionRef.current.onresult = (event) => {
       const transcriptedText = event.results[0][0].transcript;
       setTranscript(transcriptedText);
@@ -33,18 +32,15 @@ function SpeechToTextControls({ onTranscription }) {
       }
     };
 
-    // Event handler untuk error
     recognitionRef.current.onerror = (event) => {
       console.error('Terjadi kesalahan:', event.error);
       setIsRecording(false);
     };
 
-    // Event handler saat perekaman selesai
     recognitionRef.current.onend = () => {
       setIsRecording(false);
     };
 
-    // Mulai perekaman
     recognitionRef.current.start();
     console.log('Perekaman dimulai...');
   };
@@ -60,10 +56,21 @@ function SpeechToTextControls({ onTranscription }) {
   return (
     <div>
       <Button
+      className='dark:text-gray-100'
         onClick={isRecording ? handleStopRecording : handleStartRecording}
-        color={isRecording ? 'danger' : 'success'}
+        // color={isRecording ? 'danger' : 'success'}
       >
         {isRecording ? 'Hentikan Perekaman' : 'Mulai Perekaman'}
+        {isRecording && (
+          <div className="dot-wave-container">
+            <div className="dot-wave"></div>
+            <div className="dot-wave"></div>
+            <div className="dot-wave"></div>
+            <div className="dot-wave"></div>
+            <div className="dot-wave"></div>
+            <div className="dot-wave"></div>
+          </div>
+        )}
       </Button>
       {transcript && (
         <div className="mt-4 p-4 border rounded bg-gray-100">
