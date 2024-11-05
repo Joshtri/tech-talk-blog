@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from './Layout';
-import { Button, Card } from "flowbite-react";
+import { Button, Card, Dropdown } from "flowbite-react";
 import Welcome from '../components/Main/Welcome';
 import { Link } from 'react-router-dom';
-import { FaShareAlt, FaCommentDots } from 'react-icons/fa';
+import { FaShareAlt, FaCommentDots, FaFacebook, FaTwitter, FaWhatsapp, FaCopy } from 'react-icons/fa';
 
 function Main() {
   const [postItem, setPostItem] = useState([]);
@@ -27,11 +27,10 @@ function Main() {
         posts.map(async (post) => {
           try {
             const commentResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/count/${post._id}`);
-            console.log('value id' + post._id);
             return { ...post, commentsCount: commentResponse.data };
           } catch (error) {
             console.error(`Failed to fetch comments for post ${post._id}:`, error);
-            return { ...post, commentsCount: 0 }; // Default to 0 if there's an error
+            return { ...post, commentsCount: 0 };
           }
         })
       );
@@ -42,6 +41,11 @@ function Main() {
       setError(error.message);
       setLoading(false);
     }
+  };
+
+  const handleCopyLink = (url) => {
+    navigator.clipboard.writeText(url);
+    alert("Link berhasil disalin ke clipboard!");
   };
 
   return (
@@ -86,10 +90,24 @@ function Main() {
                       <FaCommentDots className="mr-1" />
                       <span className="text-sm">{post.commentsCount || 0} Komentar</span>
                     </div>
-                    <button className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800">
-                      <FaShareAlt className="mr-1" />
-                      <span className="text-sm">Bagikan</span>
-                    </button>
+                    <Dropdown
+                      label={<FaShareAlt className="text-blue-600 dark:text-blue-400 hover:text-blue-800 cursor-pointer" />}
+                      inline
+                      arrowIcon={false}
+                    >
+                      <Dropdown.Item onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.origin}/post/${post.slug}`, '_blank')}>
+                        <FaFacebook className="mr-2 text-blue-600" /> Bagikan ke Facebook
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => window.open(`https://twitter.com/intent/tweet?url=${window.location.origin}/post/${post.slug}`, '_blank')}>
+                        <FaTwitter className="mr-2 text-blue-400" /> Bagikan ke Twitter
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => window.open(`https://wa.me/?text=${window.location.origin}/post/${post.slug}`, '_blank')}>
+                        <FaWhatsapp className="mr-2 text-green-500" /> Bagikan ke WhatsApp
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleCopyLink(`${window.location.origin}/post/${post.slug}`)}>
+                        <FaCopy className="mr-2 text-gray-500" /> Salin Tautan
+                      </Dropdown.Item>
+                    </Dropdown>
                   </div>
                   <Link to={`post/${post.slug}`} className="mt-auto">
                     <Button className="w-full">
