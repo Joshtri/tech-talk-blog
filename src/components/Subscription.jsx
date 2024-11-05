@@ -68,8 +68,8 @@ function Subscription() {
       <div className="mb-4">
         <input
           required={true}
-          type="text"
-          placeholder="Enter your WhatsApp (optional)..."
+          type="number"
+          placeholder="Enter your WhatsApp...."
           value={whatsapp}
           onChange={(e) => setWhatsapp(e.target.value)}
           className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none"
