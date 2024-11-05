@@ -130,7 +130,7 @@ function NavbarComp() {
                   {/* Toggle Dark Mode Button */}
         <button
           onClick={toggleTheme}
-          className="ml-4 text-gray-700 dark:text-gray-300 focus:outline-none"
+          className="ml-4 text-gray-700 dark:text-gray-300 focus:outline-none pt-1"
         >
           {theme === 'dark' ? <FaSun className="h-6 w-6" /> : <FaMoon className="h-6 w-6" />}
         </button>
