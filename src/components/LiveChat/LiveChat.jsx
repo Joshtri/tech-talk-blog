@@ -17,11 +17,9 @@ function LiveChat() {
   const [userId, setUserId] = useState(null); // State untuk menyimpan userId
   const messagesEndRef = useRef(null);
 
-
   // Audio objects for ringtones
   const sentMessageAudio = new Audio(sentAudio);
   const receivedMessageAudio = new Audio(receivedAudio);
-  
 
   // Mendapatkan userId dari backend saat komponen dimuat
   useEffect(() => {
@@ -84,13 +82,6 @@ function LiveChat() {
     }
   };
 
-  // Spinner Loading
-  const LoadingSpinner = () => (
-    <div className="flex items-center justify-center h-full">
-      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
-    </div>
-  );
-
   // Skeleton Loading untuk Pesan
   const SkeletonMessage = () => (
     <div className="flex flex-col space-y-4 p-4">
@@ -100,13 +91,12 @@ function LiveChat() {
     </div>
   );
 
-  if (!userId) return <LoadingSpinner />;
-  if (error) return <div>Error loading messages...</div>;
+  if (!userId || error) return <SkeletonMessage />;
 
   return (
-    <div className="mt-6 flex flex-col h-full w-full max-w-lg mx-auto bg-gray-100 shadow-lg rounded-lg overflow-hidden">
+    <div className="mt-6 flex flex-col h-full w-full max-w-lg mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
       {/* Header */}
-      <div className="bg-blue-600 p-4 text-white font-semibold text-lg text-center">
+      <div className="bg-blue-600 dark:bg-blue-900 p-4 text-white font-semibold text-lg text-center">
         Live Chat
       </div>
 
@@ -151,7 +141,7 @@ function LiveChat() {
       </div>
 
       {/* Input Pesan yang Sticky */}
-      <div className="p-4 border-t flex items-center sticky bottom-0 bg-gray-100">
+      <div className="p-4 border-t border-gray-600 flex items-center sticky bottom-0 bg-gray-100 dark:bg-gray-800">
         <input
           type="text"
           className="flex-grow p-2 mr-2 border rounded-md outline-none"
