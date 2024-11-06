@@ -29,7 +29,7 @@ function LiveChat() {
 
   // Menggunakan SWR untuk melakukan polling otomatis
   const { data: messages, error } = useSWR(
-    'http://localhost:5000/api/chat/messages',
+    `${import.meta.env.VITE_BASE_URL}/api/chat/messages`,
     fetcher,
     {
       refreshInterval: 3000, // Polling setiap 3 detik
@@ -46,7 +46,7 @@ function LiveChat() {
 
     try {
       // Mengirim pesan ke backend dengan `userId`
-      await axios.post("http://localhost:5000/api/chat/messages", {
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/chat/messages`, {
         text: newMessage,
         userId: CURRENT_USER_ID, // Mengirim userId yang telah dibuat
       });
