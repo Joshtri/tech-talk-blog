@@ -1,13 +1,14 @@
+// LiveChat.js
+
 import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import { io } from 'socket.io-client';
 
 const socket = io("https://tech-talk-blog-api.vercel.app", {
-  transports: ["websocket"],
   reconnectionAttempts: 5,
-  timeout: 10000
+  timeout: 10000,
+  withCredentials: true, // Ditambahkan jika diperlukan
 });
-
 
 function LiveChat() {
   const [messages, setMessages] = useState([
@@ -21,6 +22,7 @@ function LiveChat() {
     // Mendapatkan ID pengguna saat ini
     socket.on('connect', () => {
       setCurrentUserId(socket.id);
+      console.log("Connected to server with ID:", socket.id);
     });
 
     // Mendengarkan pesan dari server
@@ -32,8 +34,8 @@ function LiveChat() {
       console.error("Connection Error:", err);
     });
 
-    socket.on('disconnect', () => {
-      console.warn("Disconnected from server.");
+    socket.on('disconnect', (reason) => {
+      console.warn("Disconnected from server:", reason);
     });
 
     // Bersihkan event listener saat komponen di-unmount
