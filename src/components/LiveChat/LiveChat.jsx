@@ -94,7 +94,7 @@ function LiveChat() {
   if (!userId || error) return <SkeletonMessage />;
 
   return (
-    <div className="mt-6 flex flex-col h-full w-full max-w-lg mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+    <div className="mt-10 mb-10 flex flex-col h-full w-full max-w-lg mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
       {/* Header */}
       <div className="bg-blue-600 dark:bg-blue-900 p-4 text-white font-semibold text-lg text-center">
         Live Chat
