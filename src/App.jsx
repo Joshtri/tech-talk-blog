@@ -9,6 +9,7 @@ import GamesPage from './pages/GamesPage';
 import { HelmetProvider } from 'react-helmet-async';
 import VoiceLabPage from './pages/VoiceLabPage';
 import LiveChatPage from "./pages/LiveChatPage";
+import CSHubPage from "./pages/CsHubPage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path='/voice-labs' element={<VoiceLabPage/>}/>
 
             <Route path='/live-chat' element={<LiveChatPage/>}/>
+            <Route path="/cs-hub" element={<CSHubPage />} />
 
     
           </Routes>

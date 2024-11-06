@@ -113,7 +113,8 @@ function NavbarComp() {
               </motion.div>
             </NavLink>
           </Navbar.Link>
-          <Navbar.Link>
+
+          {/* <Navbar.Link>
             <NavLink to="/voice-labs" className="text-lg">
               <motion.div
                 variants={linkVariants}
@@ -126,7 +127,24 @@ function NavbarComp() {
                 Voice Lab
               </motion.div>
             </NavLink>
-          </Navbar.Link>
+          </Navbar.Link> */}
+
+            <Navbar.Link>
+              <NavLink to="/cs-hub" className="text-lg">
+                <motion.div
+                  variants={linkVariants}
+                  initial="hidden"
+                  animate={hovered === "cs-hub" ? "hover" : "hidden"}
+                  onMouseEnter={() => setHovered("cs-hub")}
+                  onMouseLeave={() => setHovered(null)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300"
+                >
+                  CS Hub
+                </motion.div>
+              </NavLink>
+            </Navbar.Link>
+
+
                   {/* Toggle Dark Mode Button */}
         <button
           onClick={toggleTheme}
