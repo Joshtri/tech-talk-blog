@@ -2,18 +2,22 @@ import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import { io } from 'socket.io-client';
 
-const socket = io(import.meta.env.VITE_BASE_URL);
+const socket = io(import.meta.env.VITE_BASE_URL, {
+  transports: ["websocket"],
+  reconnectionAttempts: 5,
+  timeout: 10000
+});
 
 function LiveChat() {
   const [messages, setMessages] = useState([
     { id: 1, userId: 'Bot', text: 'Selamat datang di chat! Ada yang bisa kami bantu?' }
   ]);
   const [newMessage, setNewMessage] = useState('');
-  const [currentUserId, setCurrentUserId] = useState(null); // ID pengguna saat ini
+  const [currentUserId, setCurrentUserId] = useState(null);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    // Set `currentUserId` sebagai ID unik untuk pengguna ini (misalnya, `socket.id`)
+    // Mendapatkan ID pengguna saat ini
     socket.on('connect', () => {
       setCurrentUserId(socket.id);
     });
@@ -23,10 +27,20 @@ function LiveChat() {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 
-    // Bersihkan event listener saat komponen unmount
+    socket.on('connect_error', (err) => {
+      console.error("Connection Error:", err);
+    });
+
+    socket.on('disconnect', () => {
+      console.warn("Disconnected from server.");
+    });
+
+    // Bersihkan event listener saat komponen di-unmount
     return () => {
       socket.off('connect');
       socket.off('receiveMessage');
+      socket.off('connect_error');
+      socket.off('disconnect');
     };
   }, []);
 
@@ -39,7 +53,7 @@ function LiveChat() {
 
     const message = {
       id: messages.length + 1,
-      userId: currentUserId, // Gunakan ID pengguna saat ini
+      userId: currentUserId,
       text: newMessage
     };
 
@@ -62,8 +76,8 @@ function LiveChat() {
             <div
               className={`px-4 py-2 rounded-lg max-w-xs ${
                 message.userId === currentUserId
-                  ? 'bg-blue-500 text-white'  // Bubble biru untuk pengguna saat ini
-                  : 'bg-gray-300 text-gray-900'  // Bubble abu-abu untuk pengguna lain
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-300 text-gray-900'
               }`}
             >
               <span className="block font-semibold">
