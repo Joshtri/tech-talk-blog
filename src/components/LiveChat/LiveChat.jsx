@@ -19,7 +19,7 @@ function LiveChat() {
       try {
         let storedUserId = localStorage.getItem('userId');
         if (!storedUserId) {
-          const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/chat/user`);
+          const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/user`);
           storedUserId = response.data.userId;
           localStorage.setItem('userId', storedUserId);
         }
