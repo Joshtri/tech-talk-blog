@@ -2,10 +2,15 @@
 
 import { NavLink } from 'react-router-dom';
 import Layout from './Layout';
+import { Helmet } from 'react-helmet-async';
 
 function CSHubPage() {
   return (
     <>
+    <Helmet>
+        <title>CS Hub - Tech Talk Blog</title>
+
+      </Helmet>
       <Layout>
         <div className="container mx-auto px-4 py-8">
           <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">CS Hub</h2>

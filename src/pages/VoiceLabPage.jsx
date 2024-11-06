@@ -9,6 +9,7 @@ import SpeechToTextFeature from '../components/VoiceLabs/SpeechToText/SpeechToTe
 import VoiceEffectsFeature from '../components/VoiceLabs/VoiceEffects/VoiceEffectsFeature';
 import { isInstagramApp } from '../utils/deviceHelpers';
 import { FaChrome } from 'react-icons/fa6';
+import { Helmet } from 'react-helmet-async';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data.data);
 
@@ -52,6 +53,10 @@ function VoiceLabPage() {
 
   return (
     <Layout>
+          <Helmet>
+    <title>Voice Labs - Tech Talk Blog</title>
+
+  </Helmet>
       <div className="container mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-center mb-8 dark:text-gray-300">Voice Lab</h1>
         <Card className="mb-6 p-4 bg-yellow-100 border-l-4 border-yellow-500">
