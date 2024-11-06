@@ -8,10 +8,20 @@ import useSWR, { mutate } from 'swr';
 // Fungsi untuk mendapatkan data pesan
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
+// Import audio files
+import sentAudio from '../../assets/audio/sent-tone.mp3';
+import receivedAudio from '../../assets/audio/fart-tone.mp3';
+
 function LiveChat() {
   const [newMessage, setNewMessage] = useState('');
   const [userId, setUserId] = useState(null); // State untuk menyimpan userId
   const messagesEndRef = useRef(null);
+
+
+  // Audio objects for ringtones
+  const sentMessageAudio = new Audio(sentAudio);
+  const receivedMessageAudio = new Audio(receivedAudio);
+  
 
   // Mendapatkan userId dari backend saat komponen dimuat
   useEffect(() => {
@@ -38,6 +48,15 @@ function LiveChat() {
     fetcher,
     {
       refreshInterval: 3000,
+      onSuccess: (newMessages) => {
+        // Play received message sound if there's a new message from others
+        if (messages && newMessages.length > messages.length) {
+          const lastMessage = newMessages[newMessages.length - 1];
+          if (lastMessage.userId !== userId) {
+            receivedMessageAudio.play();
+          }
+        }
+      },
     }
   );
 
@@ -57,6 +76,9 @@ function LiveChat() {
       });
       setNewMessage('');
       mutate(`${import.meta.env.VITE_BASE_URL}/api/chat/messages`); // Memperbarui data SWR
+
+      // Play sent message sound
+      sentMessageAudio.play();
     } catch (error) {
       console.error('Error sending message:', error);
     }
