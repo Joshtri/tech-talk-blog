@@ -1,68 +1,79 @@
-// LiveChat.js
+// src/components/LiveChat.js
 
 import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
-import { io } from 'socket.io-client';
+import axios from 'axios';
+import useSWR, { mutate } from 'swr';
+import { v4 as uuidv4 } from 'uuid';
 
-const socket = io("https://tech-talk-blog-api.vercel.app", {
-  reconnectionAttempts: 5,
-  timeout: 10000,
-  withCredentials: true, // Penting untuk CORS dengan kredensial
-});
+// Fetcher function untuk digunakan oleh SWR
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+// Dapatkan atau buat ID pengguna di `localStorage`
+const getCurrentUserId = () => {
+  let userId = localStorage.getItem('userId');
+  if (!userId) {
+    userId = uuidv4(); // Buat UUID baru
+    localStorage.setItem('userId', userId);
+    
+  }
+  return userId;
+};
+
+const CURRENT_USER_ID = getCurrentUserId();
+console.log("Current User ID:", CURRENT_USER_ID); // Tambahkan ini untuk melihat userId di console
 
 function LiveChat() {
-  const [messages, setMessages] = useState([
-    { id: 1, userId: 'Bot', text: 'Selamat datang di chat! Ada yang bisa kami bantu?' }
-  ]);
   const [newMessage, setNewMessage] = useState('');
-  const [currentUserId, setCurrentUserId] = useState(null);
   const messagesEndRef = useRef(null);
 
-  useEffect(() => {
-    // Mendapatkan ID pengguna saat ini
-    socket.on('connect', () => {
-      setCurrentUserId(socket.id);
-      console.log("Connected to server with ID:", socket.id);
-    });
-
-    // Mendengarkan pesan dari server
-    socket.on('receiveMessage', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-
-    socket.on('connect_error', (err) => {
-      console.error("Connection Error:", err);
-    });
-
-    socket.on('disconnect', (reason) => {
-      console.warn("Disconnected from server:", reason);
-    });
-
-    // Bersihkan event listener saat komponen di-unmount
-    return () => {
-      socket.off('connect');
-      socket.off('receiveMessage');
-      socket.off('connect_error');
-      socket.off('disconnect');
-    };
-  }, []);
+  // Menggunakan SWR untuk melakukan polling otomatis
+  const { data: messages, error } = useSWR(
+    'http://localhost:5000/api/chat/messages',
+    fetcher,
+    {
+      refreshInterval: 3000, // Polling setiap 3 detik
+    }
+  );
 
   useEffect(() => {
+    // Scroll otomatis ke pesan terbaru saat data diperbarui
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
 
-    const message = {
-      id: messages.length + 1,
-      userId: currentUserId,
-      text: newMessage
-    };
+    try {
+      // Mengirim pesan ke backend dengan `userId`
+      await axios.post("http://localhost:5000/api/chat/messages", {
+        text: newMessage,
+        userId: CURRENT_USER_ID, // Mengirim userId yang telah dibuat
+      });
+      setNewMessage('');
 
-    socket.emit('sendMessage', message);
-    setNewMessage('');
+      // Memaksa SWR untuk revalidasi data agar pesan baru langsung terlihat
+      mutate('http://localhost:5000/api/chat/messages');
+
+      // Scroll otomatis ke pesan terbaru
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
+
+  const handleClearMessages = async () => {
+    try {
+      await axios.delete("http://localhost:5000/api/chat/messages");
+      // Mengosongkan cache SWR untuk membersihkan pesan
+      mutate('http://localhost:5000/api/chat/messages', []);
+    } catch (error) {
+      console.error("Error clearing messages:", error);
+    }
+  };
+
+  if (error) return <div>Error loading messages...</div>;
+  if (!messages) return <div>Loading...</div>;
 
   return (
     <div className="flex flex-col h-full w-full max-w-lg mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg rounded-lg">
@@ -74,19 +85,22 @@ function LiveChat() {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${message.userId === currentUserId ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${message.userId === CURRENT_USER_ID ? 'justify-end' : 'justify-start'}`}
           >
             <div
               className={`px-4 py-2 rounded-lg max-w-xs ${
-                message.userId === currentUserId
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-300 text-gray-900'
+                message.userId === CURRENT_USER_ID
+                  ? 'bg-green-500 text-white' // Warna hijau untuk pesan dari pengguna saat ini
+                  : 'bg-gray-300 text-gray-900' // Warna abu-abu untuk pesan dari pengguna lain
               }`}
+              style={{
+                borderRadius: message.userId === CURRENT_USER_ID ? '15px 15px 0px 15px' : '15px 15px 15px 0px', // Untuk memberikan bentuk bubble seperti WhatsApp
+              }}
             >
-              <span className="block font-semibold">
-                {message.userId === currentUserId ? 'You' : 'Other'}
-              </span>
               <span className="block">{message.text}</span>
+              <span className="block text-xs mt-1 text-right">
+                {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </span>
             </div>
           </div>
         ))}
@@ -107,6 +121,12 @@ function LiveChat() {
           className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
         >
           <FaPaperPlane />
+        </button>
+        <button
+          onClick={handleClearMessages}
+          className="p-2 ml-2 bg-red-600 text-white rounded-full hover:bg-red-700"
+        >
+          Clear
         </button>
       </div>
     </div>
