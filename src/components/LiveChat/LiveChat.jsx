@@ -2,11 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import { io } from 'socket.io-client';
 
-const socket = io(import.meta.env.VITE_BASE_URL, {
+const socket = io("https://tech-talk-blog-api.vercel.app", {
   transports: ["websocket"],
   reconnectionAttempts: 5,
   timeout: 10000
 });
+
 
 function LiveChat() {
   const [messages, setMessages] = useState([
