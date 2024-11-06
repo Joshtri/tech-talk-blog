@@ -7,7 +7,7 @@ import { io } from 'socket.io-client';
 const socket = io("https://tech-talk-blog-api.vercel.app", {
   reconnectionAttempts: 5,
   timeout: 10000,
-  withCredentials: true, // Ditambahkan jika diperlukan
+  withCredentials: true, // Penting untuk CORS dengan kredensial
 });
 
 function LiveChat() {
