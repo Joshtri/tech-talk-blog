@@ -10,7 +10,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 // Import audio files
 import sentAudio from '../../assets/audio/sent-tone.mp3';
-import receivedAudio from '../../assets/audio/fart-tone.mp3';
+import receivedAudio from '../../assets/audio/message-received-tone.mp3';
 
 function LiveChat() {
   const [newMessage, setNewMessage] = useState('');
