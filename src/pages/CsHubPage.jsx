@@ -52,14 +52,25 @@ function CSHubPage() {
             </div>
 
             {/* Face Detection Expression - Under Construction */}
-            <div className="bg-red-100 dark:bg-red-900 p-4 rounded-lg shadow transition opacity-60 cursor-not-allowed">
+            <NavLink to="/face-detection-expression" className="bg-red-100 dark:bg-red-900 p-4 rounded-lg shadow transition">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                Face Detection Expression <span className="text-sm text-gray-500 dark:text-gray-400">🚧 Under Construction</span>
+                Face Detection Expression <span className="text-sm text-gray-500 dark:text-gray-400">🚧Beta</span>
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
                 Deteksi ekspresi wajah dan emosi.
               </p>
-            </div>
+            </NavLink>
+
+                        {/* Live Chat */}
+            <NavLink
+              to="/audio-cutter"
+              className="bg-stone-100 dark:bg-stone-600 p-4 rounded-lg shadow hover:bg-stone-200 dark:hover:bg-stone-800 transition"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Audio Cutter<span className="text-sm text-gray-500 dark:text-gray-400">🚧Beta</span></h3>
+              <p className="text-gray-700 dark:text-gray-300">
+              Potong dan sesuaikan audio dengan mudah langsung dari browser Anda.
+              </p>
+            </NavLink>
             
           </div>
         </div>

@@ -6,4 +6,10 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
+  optimizeDeps: {
+    // Uncomment the following line if you want to exclude TensorFlow dependencies from optimization
+    // exclude: ['@tensorflow-models/face-landmarks-detection', '@tensorflow/tfjs'],
+    exclude: ['@mediapipe/face_mesh'],
+
+  },
 });

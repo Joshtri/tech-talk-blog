@@ -10,6 +10,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import VoiceLabPage from './pages/VoiceLabPage';
 import LiveChatPage from "./pages/LiveChatPage";
 import CSHubPage from "./pages/CsHubPage";
+import AudioCutterPage from "./pages/AudioCutterPage";
+import FaceDetectionExpressionPage from "./pages/FaceDetectionExpressionPage";
 
 
 function App() {
@@ -27,6 +29,9 @@ function App() {
             <Route path='/news' element={<NewsPage/>}/>
             <Route path='/voice-labs' element={<VoiceLabPage/>}/>
 
+
+            <Route path="/audio-cutter" element={<AudioCutterPage/>}/>
+            <Route path="/face-detection-expression" element={<FaceDetectionExpressionPage/>}/>
             <Route path='/live-chat' element={<LiveChatPage/>}/>
             <Route path="/cs-hub" element={<CSHubPage />} />
 
