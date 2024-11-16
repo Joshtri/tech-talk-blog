@@ -15,7 +15,7 @@ function Main() {
   useEffect(() => {
     document.title = title;
     getPost();
-  }, []);
+  },[]);
 
   const getPost = async () => {
     try {

@@ -1,0 +1,6 @@
+.justified-content {
+  text-align: justify;
+  word-spacing: 0.05em; /* Mengurangi jarak antar kata */
+  line-height: 1.8; /* Memberikan jarak antar baris untuk keterbacaan */
+  hyphens: auto; /* Membuat teks otomatis memotong kata */
+}

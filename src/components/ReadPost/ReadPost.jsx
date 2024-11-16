@@ -10,6 +10,7 @@ import CommentList from '../CommentList';
 import Subscription from '../Subscription';
 import ShareButton from './ShareButton';
 import { Helmet } from 'react-helmet-async';
+import './content.css';
 
 
 import { Flip, toast, ToastContainer } from 'react-toastify';
@@ -166,7 +167,7 @@ function PostDetailComp() {
         ) : (
           post && (
             
-            <Card className="max-w-4xl w-full p-4 mt-8 mb-7">
+            <Card className="max-w-4xl w-full p-0 mt-8 mb-7">
               {post.coverImageUrl && (
                 <img
                   src={post.coverImageUrl}
@@ -182,9 +183,10 @@ function PostDetailComp() {
                 </p>
                 <hr className="mt-3" />
                 <div
-                  className="mt-4 text-justify dark:text-gray-200"
+                  className="mt-4 text-justify dark:text-gray-200 justified-content"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
+
 
                 <div className="flex justify-between mt-4 space-x-2">
                   <div>
