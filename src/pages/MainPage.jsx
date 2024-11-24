@@ -21,20 +21,21 @@ function Main() {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post`);
       const posts = response.data;
-
-      // Fetch comment count for each post and add it to the post data
+  
+      // Fetch comment count for each post and ensure commentsCount is a number
       const postsWithComments = await Promise.all(
         posts.map(async (post) => {
           try {
             const commentResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/comment/count/${post._id}`);
-            return { ...post, commentsCount: commentResponse.data };
+            const commentsCount = commentResponse.data.count || 0; // Ensure number
+            return { ...post, commentsCount };
           } catch (error) {
             console.error(`Failed to fetch comments for post ${post._id}:`, error);
-            return { ...post, commentsCount: 0 };
+            return { ...post, commentsCount: 0 }; // Default if failed
           }
         })
       );
-
+  
       setPostItem(postsWithComments);
       setLoading(false);
     } catch (error) {
@@ -42,6 +43,7 @@ function Main() {
       setLoading(false);
     }
   };
+  
 
   const handleCopyLink = (url) => {
     navigator.clipboard.writeText(url);
