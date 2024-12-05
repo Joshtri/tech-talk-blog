@@ -5,6 +5,8 @@ import { Button, Card, Dropdown } from "flowbite-react";
 import Welcome from '../components/Main/Welcome';
 import { Link } from 'react-router-dom';
 import { FaShareAlt, FaCommentDots, FaFacebook, FaTwitter, FaWhatsapp, FaCopy } from 'react-icons/fa';
+import { id } from 'date-fns/locale';
+import { formatDistanceToNow } from 'date-fns';
 
 function Main() {
   const [postItem, setPostItem] = useState([]);
@@ -81,13 +83,16 @@ function Main() {
                   />
                 )}
                 <div className="p-4 flex flex-col flex-grow">
+
                   <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white capitalize mb-2">
                     {post.title}
                   </h5>
+                  
                   <p className="font-normal text-gray-700 dark:text-gray-400 mb-4">
                     {post.description?.slice(0, 65)}{post.description?.length > 65 && '...'}
                   </p>
                   <div className="flex items-center justify-between mt-auto mb-4">
+
                     <div className="flex items-center text-gray-600 dark:text-gray-100">
                       <FaCommentDots className="mr-1" />
                       <span className="text-sm">{post.commentsCount || 0} Komentar</span>
@@ -110,7 +115,12 @@ function Main() {
                         <FaCopy className="mr-2 text-gray-500" /> Salin Tautan
                       </Dropdown.Item>
                     </Dropdown>
+                    
                   </div>
+                  <span className="text-xs text-end dark:text-gray-400">
+                    {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true, locale: id })}
+                  </span>
+                  <hr className='mt-2 mb-4'/>
                   <Link to={`post/${post.slug}`} className="mt-auto">
                     <Button className="w-full">
                       Baca Lanjut
