@@ -143,6 +143,20 @@ function NavbarComp() {
                 </motion.div>
               </NavLink>
             </Navbar.Link>
+            <Navbar.Link>
+              <NavLink to="/tech-talk-video" className="text-lg">
+                <motion.div
+                  variants={linkVariants}
+                  initial="hidden"
+                  animate={hovered === "tech-talk-video" ? "hover" : "hidden"}
+                  onMouseEnter={() => setHovered("tech-talk-video")}
+                  onMouseLeave={() => setHovered(null)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300"
+                >
+                  Tech Talk Video
+                </motion.div>
+              </NavLink>
+            </Navbar.Link>
 
 
                   {/* Toggle Dark Mode Button */}
