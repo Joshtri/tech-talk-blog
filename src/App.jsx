@@ -12,6 +12,7 @@ import LiveChatPage from "./pages/LiveChatPage";
 import CSHubPage from "./pages/CsHubPage";
 import AudioCutterPage from "./pages/AudioCutterPage";
 import FaceDetectionExpressionPage from "./pages/FaceDetectionExpressionPage";
+import TechTalkPlaylist from "./pages/TechTalkVideoPages/TechTalkPlaylist";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/face-detection-expression" element={<FaceDetectionExpressionPage/>}/>
             <Route path='/live-chat' element={<LiveChatPage/>}/>
             <Route path="/cs-hub" element={<CSHubPage />} />
+            <Route path="/tech-talk-video" element={<TechTalkPlaylist />} />
 
     
           </Routes>
