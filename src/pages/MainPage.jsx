@@ -7,12 +7,31 @@ import { Link } from 'react-router-dom';
 import { FaShareAlt, FaCommentDots, FaFacebook, FaTwitter, FaWhatsapp, FaCopy } from 'react-icons/fa';
 import { id } from 'date-fns/locale';
 import { formatDistanceToNow } from 'date-fns';
+import SearchBar from '../components/SearchBar';
 
 function Main() {
   const [postItem, setPostItem] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
   const title = "Beranda";
+
+  useEffect(() => {
+    setFilteredPosts(postItem); // Set default filteredPosts to all posts
+  }, [postItem]);
+  
+  const handleSearch = (searchTerm) => {
+    if (!searchTerm) {
+      setFilteredPosts(postItem); // Reset if searchTerm is empty
+      return;
+    }
+    const results = postItem.filter(post =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.description?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredPosts(results);
+  };
 
   useEffect(() => {
     document.title = title;
@@ -55,6 +74,8 @@ function Main() {
   return (
     <Layout>
       <Welcome />
+      <SearchBar onSearch={handleSearch} />
+
       <div className="flex justify-center px-4 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full">
           {error && <div className="text-red-500">{error}</div>}
@@ -73,7 +94,7 @@ function Main() {
               </Card>
             ))
           ) : (
-            postItem.map((post) => (
+            filteredPosts.map((post) => (
               <Card key={post._id} className="w-full flex flex-col shadow-lg rounded-lg overflow-hidden">
                 {post.coverImageUrl && (
                   <img
