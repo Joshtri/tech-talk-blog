@@ -8,6 +8,7 @@ import { FaShareAlt, FaCommentDots, FaFacebook, FaTwitter, FaWhatsapp, FaCopy } 
 import { id } from 'date-fns/locale';
 import { formatDistanceToNow } from 'date-fns';
 import SearchBar from '../components/SearchBar';
+import EmptyArticleMessage from '../components/EmptyArticleMessage'; // Import komponen notifikasi
 
 function Main() {
   const [postItem, setPostItem] = useState([]);
@@ -18,9 +19,14 @@ function Main() {
   const title = "Beranda";
 
   useEffect(() => {
+    document.title = title;
+    getPost();
+  }, []);
+
+  useEffect(() => {
     setFilteredPosts(postItem); // Set default filteredPosts to all posts
   }, [postItem]);
-  
+
   const handleSearch = (searchTerm) => {
     if (!searchTerm) {
       setFilteredPosts(postItem); // Reset if searchTerm is empty
@@ -33,17 +39,12 @@ function Main() {
     setFilteredPosts(results);
   };
 
-  useEffect(() => {
-    document.title = title;
-    getPost();
-  },[]);
-
   const getPost = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/post`);
       const posts = response.data;
-  
-      // Fetch comment count for each post and ensure commentsCount is a number
+
+      // Fetch comment count for each post
       const postsWithComments = await Promise.all(
         posts.map(async (post) => {
           try {
@@ -56,7 +57,7 @@ function Main() {
           }
         })
       );
-  
+
       setPostItem(postsWithComments);
       setLoading(false);
     } catch (error) {
@@ -64,7 +65,6 @@ function Main() {
       setLoading(false);
     }
   };
-  
 
   const handleCopyLink = (url) => {
     navigator.clipboard.writeText(url);
@@ -77,10 +77,12 @@ function Main() {
       <SearchBar onSearch={handleSearch} />
 
       <div className="flex justify-center px-4 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full">
-          {error && <div className="text-red-500">{error}</div>}
-          {loading ? (
-            Array.from({ length: 3 }).map((_, index) => (
+        {error && <div className="text-red-500">{error}</div>}
+
+        {loading ? (
+          // Loading State
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full">
+            {Array.from({ length: 3 }).map((_, index) => (
               <Card key={index} className="max-w-sm w-80 flex flex-col shadow-lg rounded-lg overflow-hidden animate-pulse">
                 <div className="w-full h-48 bg-gray-300"></div>
                 <div className="p-4 flex flex-col flex-grow">
@@ -92,9 +94,20 @@ function Main() {
                   </div>
                 </div>
               </Card>
-            ))
-          ) : (
-            filteredPosts.map((post) => (
+            ))}
+          </div>
+        ) : filteredPosts.length === 0 ? (
+          // Pesan jika tidak ada artikel ditemukan
+          <EmptyArticleMessage
+            message="Postingan Tidak Ditemukan"
+            description="Kami tidak dapat menemukan postingan dengan kata kunci pencarian Anda. Yuk, coba gunakan kata kunci lain!"
+            buttonText="Tampilkan Semua Postingan"
+            onButtonClick={() => setFilteredPosts(postItem)} // Reset pencarian
+          />
+        ) : (
+          // Render Artikel
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full">
+            {filteredPosts.map((post) => (
               <Card key={post._id} className="w-full flex flex-col shadow-lg rounded-lg overflow-hidden">
                 {post.coverImageUrl && (
                   <img
@@ -104,16 +117,15 @@ function Main() {
                   />
                 )}
                 <div className="p-4 flex flex-col flex-grow">
-
                   <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white capitalize mb-2">
                     {post.title}
                   </h5>
-                  
+
                   <p className="font-normal text-gray-700 dark:text-gray-400 mb-4">
                     {post.description?.slice(0, 65)}{post.description?.length > 65 && '...'}
                   </p>
-                  <div className="flex items-center justify-between mt-auto mb-4">
 
+                  <div className="flex items-center justify-between mt-auto mb-4">
                     <div className="flex items-center text-gray-600 dark:text-gray-100">
                       <FaCommentDots className="mr-1" />
                       <span className="text-sm">{post.commentsCount || 0} Komentar</span>
@@ -136,12 +148,12 @@ function Main() {
                         <FaCopy className="mr-2 text-gray-500" /> Salin Tautan
                       </Dropdown.Item>
                     </Dropdown>
-                    
                   </div>
+
                   <span className="text-xs text-end dark:text-gray-400">
                     {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true, locale: id })}
                   </span>
-                  <hr className='mt-2 mb-4'/>
+                  <hr className='mt-2 mb-4' />
                   <Link to={`post/${post.slug}`} className="mt-auto">
                     <Button className="w-full">
                       Baca Lanjut
@@ -156,9 +168,9 @@ function Main() {
                   </Link>
                 </div>
               </Card>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   );
