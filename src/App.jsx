@@ -13,13 +13,16 @@ import CSHubPage from "./pages/CsHubPage";
 import AudioCutterPage from "./pages/AudioCutterPage";
 import FaceDetectionExpressionPage from "./pages/FaceDetectionExpressionPage";
 import TechTalkPlaylist from "./pages/TechTalkVideoPages/TechTalkPlaylist";
+import Snowfall from "./components/SnowFall";
 
 
 function App() {
   
   return (
     <>
+        <Snowfall /> {/* Tambahkan di sini */}
       <HelmetProvider>
+
         <BrowserRouter basename='/'>
           <Routes>
             <Route path="/" element={<Main/>}/>
