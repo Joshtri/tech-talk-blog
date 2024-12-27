@@ -1,0 +1,61 @@
+pre,
+pre code {
+  background-color: #1e1e1e; /* Latar belakang gelap */
+  color: #d4d4d4; /* Warna teks default */
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  font-family: "Courier New", Courier, monospace; /* Font monospasi */
+  line-height: 1.5; /* Jarak antar baris */
+}
+
+pre code span.hljs-keyword {
+  color: #c586c0; /* Warna keyword */
+}
+
+pre code span.hljs-string {
+  color: #ce9178; /* Warna string */
+}
+
+pre code span.hljs-number {
+  color: #b5cea8; /* Warna angka */
+}
+
+pre code span.hljs-comment {
+  color: #6a9955; /* Warna komentar */
+}
+
+pre code span.hljs-function {
+  color: #dcdcaa; /* Warna nama fungsi */
+}
+
+pre code span.hljs-variable {
+  color: #9cdcfe; /* Warna variabel */
+}
+
+pre code span.hljs-attribute {
+  color: #d7ba7d; /* Warna atribut */
+}
+
+pre code span.hljs-selector-tag {
+  color: #569cd6; /* Warna tag HTML/CSS */
+}
+
+pre code span.hljs-title {
+  color: #4ec9b0; /* Warna judul */
+}
+
+.code-wrapper {
+  background-color: #1e1e1e; /* Latar belakang pembungkus */
+  border: 1px solid #444; /* Batas abu-abu */
+  border-radius: 10px; /* Sudut membulat */
+  padding: 16px;
+  margin: 20px 0;
+  overflow-x: auto; /* Scroll horizontal untuk kode panjang */
+}
+
+.prose {
+  max-width: none; /* Hilangkan batasan lebar default */
+  width: 100%; /* Pastikan konten mengisi lebar penuh */
+}

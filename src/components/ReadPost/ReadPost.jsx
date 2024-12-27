@@ -10,11 +10,12 @@ import CommentList from '../CommentList';
 import Subscription from '../Subscription';
 import ShareButton from './ShareButton';
 import { Helmet } from 'react-helmet-async';
-import './content.css';
-
-
 import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './content.css';
+import './precode.css'
+import hljs from "highlight.js"; // Import Highlight.js
+import "highlight.js/styles/monokai-sublime.css";
 
 function PostDetailComp() {
   const [post, setPost] = useState(null);
@@ -50,6 +51,15 @@ function PostDetailComp() {
       getCommentsByPostId();
     }
   }, [post]);
+
+  useEffect(() => {
+    // Highlight elemen <pre><code> setelah rendering
+    const codeBlocks = document.querySelectorAll("pre code, pre.ql-syntax");
+    codeBlocks.forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  }, [post]);
+
 
   const getCommentsByPostId = async () => {
     try {
@@ -134,30 +144,23 @@ function PostDetailComp() {
       )}
       <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-700 px-4">
         {loading ? (
-          // Skeleton loading saat data sedang dimuat
           <Card className="max-w-4xl w-full p-4 mt-8 mb-7">
             <div className="animate-pulse">
-              {/* Skeleton untuk gambar cover */}
               <div className="w-full h-96 bg-gray-300 rounded-t-lg"></div>
               <div className="p-2">
-                {/* Skeleton untuk judul */}
                 <div className="h-8 bg-gray-300 rounded w-3/4 mx-auto mt-4"></div>
-                {/* Skeleton untuk tanggal */}
                 <div className="h-4 bg-gray-300 rounded w-1/4 mx-auto mt-2"></div>
                 <hr className="mt-3" />
-                {/* Skeleton untuk konten */}
                 <div className="mt-4 space-y-4">
                   <div className="h-4 bg-gray-300 rounded"></div>
                   <div className="h-4 bg-gray-300 rounded w-5/6"></div>
                   <div className="h-4 bg-gray-300 rounded"></div>
                   <div className="h-4 bg-gray-300 rounded w-2/3"></div>
                 </div>
-                {/* Skeleton untuk tombol Like dan Copy */}
                 <div className="flex justify-between mt-4 space-x-2">
                   <div className="h-10 bg-gray-300 rounded w-24"></div>
                   <div className="h-10 bg-gray-300 rounded w-24"></div>
                 </div>
-                {/* Skeleton untuk tombol Share */}
                 <div className="flex justify-center mt-4 space-x-2">
                   <div className="h-10 bg-gray-300 rounded w-24"></div>
                 </div>
@@ -166,7 +169,6 @@ function PostDetailComp() {
           </Card>
         ) : (
           post && (
-            
             <Card className="max-w-4xl w-full p-0 mt-8 mb-7">
               {post.coverImageUrl && (
                 <img
@@ -175,19 +177,14 @@ function PostDetailComp() {
                   className="w-full h-96 object-cover rounded-t-lg"
                 />
               )}
-              <div className="p-2">
+              <div className="p-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert">
                 <h1 className="text-3xl font-bold text-center dark:text-gray-200">{post.title}</h1>
                 <p className="text-center text-gray-600 mt-2 dark:text-gray-300">
                   <MdDateRange className="inline-block mr-2" />
                   {format(new Date(post.createdAt), 'MMMM dd, yyyy')}
                 </p>
                 <hr className="mt-3" />
-                <div
-                  className="mt-4 text-justify dark:text-gray-200 justified-content"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
-
-
+                <div className='text-gray-800 prose w-full max-w-none prose-sm sm:prose lg:prose-lg xl:prose-xl text-justify' dangerouslySetInnerHTML={{ __html: post.content }} />
                 <div className="flex justify-between mt-4 space-x-2">
                   <div>
                     <button
@@ -197,39 +194,11 @@ function PostDetailComp() {
                       onClick={handleLikeToggle}
                       disabled={loading}
                     >
-                      {loading ? (
-                        <svg
-                          className="animate-spin h-5 w-5 mr-1 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                      ) : (
-                        <FiHeart
-                          className={`inline-block mr-1 transition-transform duration-300 ${
-                            isAnimating ? 'scale-125 text-pink-500' : ''
-                          }`}
-                        />
-                      )}
+                      <FiHeart className={`inline-block mr-1 transition-transform duration-300 ${isAnimating ? 'scale-125 text-pink-500' : ''}`} />
                       {liked ? 'Liked' : 'Like'}
                     </button>
                     <p className="text-gray-600 mt-2 text-center">{likeCount} Likes</p>
                   </div>
-
                   <div>
                     <button
                       className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
@@ -241,7 +210,6 @@ function PostDetailComp() {
                     <ToastContainer />
                   </div>
                 </div>
-
                 <div className="flex justify-center mt-4 space-x-2">
                   <ShareButton />
                 </div>
