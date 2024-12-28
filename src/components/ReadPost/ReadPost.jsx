@@ -53,6 +53,23 @@ function PostDetailComp() {
   }, [post]);
 
   useEffect(() => {
+    if (post && post._id) {
+      const fetchLikeStatus = async () => {
+        try {
+          const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/like/${post._id}`);
+          setLiked(response.data.liked); // Status apakah pengguna sudah menyukai
+          setLikeCount(response.data.likeCount); // Total jumlah like
+        } catch (error) {
+          console.error('Error fetching like status:', error);
+        }
+      };
+  
+      fetchLikeStatus();
+    }
+  }, [post]);
+  
+
+  useEffect(() => {
     // Highlight elemen <pre><code> setelah rendering
     const codeBlocks = document.querySelectorAll("pre code, pre.ql-syntax");
     codeBlocks.forEach((block) => {
@@ -84,15 +101,23 @@ function PostDetailComp() {
       const url = liked
         ? `${import.meta.env.VITE_BASE_URL}/api/unlike`
         : `${import.meta.env.VITE_BASE_URL}/api/like`;
-
-      const response = await axios.post(url, { postId: post._id });
-      setLikeCount(response.data.likeCount);
+  
+      // Update state secara instan untuk memberikan feedback kepada pengguna
+      setLikeCount((prevCount) => (liked ? prevCount - 1 : prevCount + 1));
       setLiked(!liked);
-      setIsAnimating(true);
+  
+      // Lakukan API call
+      const response = await axios.post(url, { postId: post._id });
+      setLikeCount(response.data.likeCount); // Pastikan sinkron dengan data backend
     } catch (error) {
       console.error('Error updating like status:', error);
+  
+      // Revert perubahan jika API call gagal
+      setLikeCount((prevCount) => (liked ? prevCount + 1 : prevCount - 1));
+      setLiked(!liked);
     }
   };
+  
 
   useEffect(() => {
     if (isAnimating) {
@@ -193,22 +218,42 @@ function PostDetailComp() {
                   <div>
                   <button
                       className={`px-3 py-1 rounded-md flex items-center transition duration-300 transform ${
-                        liked
-                          ? 'bg-red-500 dark:bg-red-800 text-white'
-                          : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-200'
+                        liked ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
                       } ${isAnimating ? 'animate-like' : ''}`}
                       onClick={handleLikeToggle}
                       disabled={loading}
                     >
-                      <FiHeart
-                        className={`inline-block mr-1 transition-transform duration-300 ${
-                          liked
-                            ? 'text-pink-500 dark:text-pink-400'
-                            : 'text-gray-800 dark:text-gray-200'
-                        } ${isAnimating ? 'scale-125' : ''}`}
-                      />
+                      {loading ? (
+                        <svg
+                          className="animate-spin h-5 w-5 mr-1 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <FiHeart
+                          className={`inline-block mr-1 transition-transform duration-300 ${
+                            isAnimating ? 'scale-125 text-pink-500' : ''
+                          }`}
+                        />
+                      )}
                       {liked ? 'Liked' : 'Like'}
                     </button>
+
 
                     <p className="text-gray-600 mt-2 text-center">{likeCount} Likes</p>
                   </div>
