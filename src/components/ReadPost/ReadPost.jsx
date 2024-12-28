@@ -184,19 +184,32 @@ function PostDetailComp() {
                   {format(new Date(post.createdAt), 'MMMM dd, yyyy')}
                 </p>
                 <hr className="mt-3" />
-                <div className='text-gray-800 dark:text-gray-300 prose w-full max-w-none prose-sm sm:prose lg:prose-lg xl:prose-xl text-justify' dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div
+                  className="text-gray-800 dark:text-gray-300 prose w-full max-w-none prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert text-justify"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+
                 <div className="flex justify-between mt-4 space-x-2">
                   <div>
-                    <button
+                  <button
                       className={`px-3 py-1 rounded-md flex items-center transition duration-300 transform ${
-                        liked ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+                        liked
+                          ? 'bg-red-500 dark:bg-red-800 text-white'
+                          : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-200'
                       } ${isAnimating ? 'animate-like' : ''}`}
                       onClick={handleLikeToggle}
                       disabled={loading}
                     >
-                      <FiHeart className={`inline-block mr-1 transition-transform duration-300 ${isAnimating ? 'scale-125 text-pink-500' : ''}`} />
+                      <FiHeart
+                        className={`inline-block mr-1 transition-transform duration-300 ${
+                          liked
+                            ? 'text-pink-500 dark:text-pink-400'
+                            : 'text-gray-800 dark:text-gray-200'
+                        } ${isAnimating ? 'scale-125' : ''}`}
+                      />
                       {liked ? 'Liked' : 'Like'}
                     </button>
+
                     <p className="text-gray-600 mt-2 text-center">{likeCount} Likes</p>
                   </div>
                   <div>
