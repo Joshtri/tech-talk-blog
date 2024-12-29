@@ -55,7 +55,7 @@ function NavbarComp() {
         <Navbar.Brand href="/">
         <img src={techTalkLogo} className="mr-3 h-12 sm:h-10" alt="Tech Talk Logo" />
           <span className="text-2xl font-bold text-gray-800 dark:text-gray-300">
-            Tech Talk Blog
+            Tech Talks Blog
           </span>
 
         </Navbar.Brand>
