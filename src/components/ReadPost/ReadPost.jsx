@@ -210,9 +210,10 @@ function PostDetailComp() {
                 </p>
                 <hr className="mt-3" />
                 <div
-                  className="text-gray-800 dark:text-gray-300 prose w-full max-w-none prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert"
+                  className="text-gray-800 dark:text-gray-300 prose w-full max-w-4xl prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
+
 
                 <div className="flex justify-between mt-4 space-x-2">
                   <div>
