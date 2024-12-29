@@ -259,7 +259,7 @@ function PostDetailComp() {
                   </div>
                   <div>
                     <button
-                      className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
+                      className="px-3 py-1 rounded-md dark:bg-slate-600 bg-gray-200 hover:bg-gray-300"
                       onClick={handleCopyLink}
                     >
                       <FiCopy className="inline-block mr-1" />

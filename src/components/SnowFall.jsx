@@ -67,7 +67,7 @@ const Snowfall = () => {
       requestAnimationFrame(update);
     };
 
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 29; i++) {
       createSnowflake(); // Jumlah salju tetap banyak
     }
 
