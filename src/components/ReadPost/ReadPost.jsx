@@ -218,7 +218,7 @@ function PostDetailComp() {
                   <div>
                   <button
                       className={`px-3 py-1 rounded-md flex items-center transition duration-300 transform ${
-                        liked ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+                        liked ? 'bg-red-500 text-white' : 'bg-gray-200 dark:bg-slate-500 hover:bg-gray-300'
                       } ${isAnimating ? 'animate-like' : ''}`}
                       onClick={handleLikeToggle}
                       disabled={loading}
@@ -259,7 +259,7 @@ function PostDetailComp() {
                   </div>
                   <div>
                     <button
-                      className="px-3 py-1 rounded-md dark:bg-slate-600 bg-gray-200 hover:bg-gray-300"
+                      className="px-3 py-1 rounded-md dark:bg-slate-500 bg-gray-200 hover:bg-gray-300"
                       onClick={handleCopyLink}
                     >
                       <FiCopy className="inline-block mr-1" />
