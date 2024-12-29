@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Navbar } from "flowbite-react";
 import { NavLink } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import techTalkLogo from '../../assets/tech_talk.png';
+import techTalkLogo from '../../assets/tech_talk_logo.png';
 
 
 
@@ -53,7 +53,11 @@ function NavbarComp() {
     >
       <Navbar fluid rounded className="px-4 py-2 mt-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md">
         <Navbar.Brand href="/">
-          <img src={techTalkLogo} className="mr-3 h-12 sm:h-10" alt="Tech Talk Logo" />
+        <img src={techTalkLogo} className="mr-3 h-12 sm:h-10" alt="Tech Talk Logo" />
+          <span className="text-2xl font-bold text-gray-800 dark:text-gray-300">
+            Tech Talk Blog
+          </span>
+
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
