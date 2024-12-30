@@ -9,6 +9,8 @@ import { id } from 'date-fns/locale';
 import { formatDistanceToNow } from 'date-fns';
 import SearchBar from '../components/SearchBar';
 import EmptyArticleMessage from '../components/EmptyArticleMessage'; // Import komponen notifikasi
+import AdBanner from '../components/AdBanner';
+import SocialBar from '../components/SocialBar';
 
 function Main() {
   const [postItem, setPostItem] = useState([]);
@@ -73,6 +75,9 @@ function Main() {
 
   return (
     <Layout>
+      {/* Tambahkan Social Bar */}
+      <SocialBar />
+
       <Welcome />
       <SearchBar onSearch={handleSearch} />
 

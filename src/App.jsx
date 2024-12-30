@@ -14,12 +14,15 @@ import AudioCutterPage from "./pages/AudioCutterPage";
 import FaceDetectionExpressionPage from "./pages/FaceDetectionExpressionPage";
 import TechTalkPlaylist from "./pages/TechTalkVideoPages/TechTalkPlaylist";
 import Snowfall from "./components/SnowFall";
+import AdBanner from "./components/AdBanner";
 
 
 function App() {
   
   return (
     <>
+                              {/* Menampilkan Banner Iklan */}
+                              {/* <AdBanner /> */}
         <Snowfall /> {/* Tambahkan di sini */}
       <HelmetProvider>
 
