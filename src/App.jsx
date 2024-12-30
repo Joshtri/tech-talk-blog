@@ -1,9 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
+import MaintenancePage from './pages/MaintenancePage'; // Halaman maintenance
+
 import Snowfall from "./components/SnowFall";
 import allRoutes from "./routes/allRoutes";
+import { useState } from "react";
 
 function App() {
+  const [isMaintenance, setIsMaintenance] = useState(true); // Ganti ke `false` jika tidak dalam mode maintenance
+
+  if (isMaintenance) {
+    return <MaintenancePage />; // Tampilkan halaman maintenance
+  }
   return (
     <>
       <Snowfall />
