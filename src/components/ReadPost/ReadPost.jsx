@@ -17,7 +17,7 @@ import './precode.css'
 import hljs from "highlight.js"; // Import Highlight.js
 import "highlight.js/styles/monokai-sublime.css";
 
-function PostDetailComp() {
+function ReadPost() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -288,4 +288,4 @@ function PostDetailComp() {
   );
 }
 
-export default PostDetailComp;
+export default ReadPost;
