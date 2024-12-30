@@ -12,7 +12,7 @@ import EmptyArticleMessage from '../components/EmptyArticleMessage'; // Import k
 import AdBanner from '../components/AdBanner';
 import SocialBar from '../components/SocialBar';
 
-function Main() {
+function MainPage() {
   const [postItem, setPostItem] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -181,4 +181,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;
