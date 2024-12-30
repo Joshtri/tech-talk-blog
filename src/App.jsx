@@ -7,7 +7,7 @@ import allRoutes from "./routes/allRoutes";
 import { useState } from "react";
 
 function App() {
-  const [isMaintenance, setIsMaintenance] = useState(true); // Ganti ke `false` jika tidak dalam mode maintenance
+  const [isMaintenance, setIsMaintenance] = useState(false); // Ganti ke `false` jika tidak dalam mode maintenance
 
   if (isMaintenance) {
     return <MaintenancePage />; // Tampilkan halaman maintenance
