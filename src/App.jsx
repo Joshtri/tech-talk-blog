@@ -1,17 +1,49 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
-import MaintenancePage from './pages/MaintenancePage'; // Halaman maintenance
-
+import { HelmetProvider } from "react-helmet-async";
+import MaintenancePage from "./pages/MaintenancePage"; // Halaman maintenance
 import Snowfall from "./components/SnowFall";
 import allRoutes from "./routes/allRoutes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios"; // Tambahkan axios
 
 function App() {
-  const [isMaintenance, setIsMaintenance] = useState(false); // Ganti ke `false` jika tidak dalam mode maintenance
+  const [isMaintenance, setIsMaintenance] = useState(false); // State untuk status maintenance
+  const [isLoading, setIsLoading] = useState(true); // State untuk loading status
 
-  if (isMaintenance) {
-    return <MaintenancePage />; // Tampilkan halaman maintenance
+  // Fungsi untuk mengambil status maintenance dari backend
+  const fetchMaintenanceStatus = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/maintenance`); // Sesuaikan URL
+      setIsMaintenance(response.data.isMaintenance);
+    } catch (error) {
+      console.error("Failed to fetch maintenance status:", error);
+    } finally {
+      setIsLoading(false); // Set loading selesai
+    }
+  };
+
+  // Panggil fetchMaintenanceStatus saat komponen mount
+  useEffect(() => {
+    fetchMaintenanceStatus();
+  }, []);
+
+  // Tampilkan spinner loading saat memuat status maintenance
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
+
+  // Jika dalam mode maintenance, tampilkan halaman maintenance
+  if (isMaintenance) {
+    return <MaintenancePage />;
+  }
+
+  // Tampilkan aplikasi jika tidak dalam mode maintenance
   return (
     <>
       <Snowfall />
