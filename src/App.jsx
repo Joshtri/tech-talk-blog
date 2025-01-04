@@ -30,10 +30,9 @@ function App() {
   // Tampilkan spinner loading saat memuat status maintenance
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="flex items-center justify-center h-screen bg-gray-100">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75"></div>
+        <p className="ml-4 text-lg font-semibold text-blue-600">Loading...</p>
       </div>
     );
   }
