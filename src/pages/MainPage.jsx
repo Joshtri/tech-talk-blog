@@ -18,7 +18,7 @@ function MainPage() {
   const [loading, setLoading] = useState(true);
   const [filteredPosts, setFilteredPosts] = useState([]);
 
-  const title = "Beranda";
+  const title = "Tech Talks Blog | Beranda";
 
   useEffect(() => {
     document.title = title;

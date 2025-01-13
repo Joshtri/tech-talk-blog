@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function About() {
-  const titlePage = "About";
+  const titlePage = "Tech Talks Blog | About";
   useEffect(() => {
     document.title = titlePage;
   }, []);
