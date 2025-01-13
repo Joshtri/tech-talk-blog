@@ -210,7 +210,7 @@ function ReadPost() {
                 </p>
                 <hr className="mt-3" />
                 <div
-                  className="text-gray-800 dark:text-gray-300 prose w-full max-w-4xl prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert"
+                  className="text-gray-800 dark:text-gray-300 prose text-justify w-full max-w-4xl prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
