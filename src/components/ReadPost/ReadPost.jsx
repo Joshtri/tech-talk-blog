@@ -194,7 +194,7 @@ function ReadPost() {
           </Card>
         ) : (
           post && (
-            <Card className="max-w-4xl w-full p-0 mt-8 mb-7">
+            <Card className="max-w-4xl w-full mt-8 mb-7">
               {post.coverImageUrl && (
                 <img
                   src={post.coverImageUrl}
@@ -202,7 +202,7 @@ function ReadPost() {
                   className="w-full h-96 object-cover rounded-t-lg"
                 />
               )}
-              <div className="p-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert">
+              <div className="p-0 prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert">
                 <h1 className="text-3xl font-bold text-center capitalize dark:text-gray-200">{post.title}</h1>
                 <p className="text-center text-gray-600 mt-2 dark:text-gray-300">
                   <MdDateRange className="inline-block mr-2" />
