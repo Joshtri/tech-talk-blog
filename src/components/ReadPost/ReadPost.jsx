@@ -17,6 +17,13 @@ import './precode.css'
 import hljs from "highlight.js"; // Import Highlight.js
 import "highlight.js/styles/monokai-sublime.css";
 
+
+// Tambahkan fungsi untuk membuat judul dinamis
+const createPageTitle = (postTitle) => {
+  const siteName = "Tech Talks Blog";
+  return postTitle ? `${siteName} | ${postTitle}` : siteName;
+};
+
 function ReadPost() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +36,7 @@ function ReadPost() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    document.title = 'Postingan';
+    // document.title = 'Postingan';
     fetchPost();
   }, [slug]);
 
@@ -154,15 +161,15 @@ function ReadPost() {
     <>
       {post && (
         <Helmet>
-          <title>{post.title} - Tech Talk Blog</title>
+          <title>{createPageTitle(post.title)}</title>
           <meta name="description" content={post.summary || 'Deskripsi default untuk postingan.'} />
-          <meta property="og:title" content={post.title} />
+          <meta property="og:title" content={createPageTitle(post.title)} />
           <meta property="og:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
           <meta property="og:image" content={post.coverImageUrl} />
           <meta property="og:url" content={`https://tech-talks-blog.com/post/${post.slug}`} />
           <meta property="og:type" content="article" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={post.title} />
+          <meta name="twitter:title" content={createPageTitle(post.title)} />
           <meta name="twitter:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
           <meta name="twitter:image" content={post.coverImageUrl} />
         </Helmet>
