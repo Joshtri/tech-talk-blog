@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
-
+Disallow: /private/
+Allow: /
 Sitemap: https://tech-talks-blog.com/sitemap.xml
