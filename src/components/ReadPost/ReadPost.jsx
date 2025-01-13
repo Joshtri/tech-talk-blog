@@ -203,7 +203,7 @@ function ReadPost() {
                 />
               )}
               <div className="p-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl dark:prose-invert">
-                <h1 className="text-3xl font-bold text-center dark:text-gray-200">{post.title}</h1>
+                <h1 className="text-3xl font-bold text-center capitalize dark:text-gray-200">{post.title}</h1>
                 <p className="text-center text-gray-600 mt-2 dark:text-gray-300">
                   <MdDateRange className="inline-block mr-2" />
                   {format(new Date(post.createdAt), 'MMMM dd, yyyy')}
