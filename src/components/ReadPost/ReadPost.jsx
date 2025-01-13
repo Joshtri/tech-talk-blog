@@ -161,17 +161,18 @@ function ReadPost() {
     <>
       {post && (
         <Helmet>
-          <title>{createPageTitle(post.title)}</title>
-          <meta name="description" content={post.summary || 'Deskripsi default untuk postingan.'} />
+          <title>{post.title} | Tech Talks Blog</title>
+          <meta name="description" content={post.summary || ''} />
           <meta property="og:title" content={post.title} />
-          <meta property="og:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
+          <meta property="og:description" content={post.summary || ''} />
           <meta property="og:image" content={post.coverImageUrl} />
           <meta property="og:url" content={`https://tech-talks-blog.com/post/${post.slug}`} />
           <meta property="og:type" content="article" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={post.title} />
-          <meta name="twitter:description" content={post.summary || 'Deskripsi default untuk postingan.'} />
+          <meta name="twitter:description" content={post.summary || ''} />
           <meta name="twitter:image" content={post.coverImageUrl} />
+          <link rel="canonical" href={`https://tech-talks-blog.com/post/${post.slug}`} />
         </Helmet>
 
       )}
