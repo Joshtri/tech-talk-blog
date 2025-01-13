@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://tech-talks-blog.com/sitemap.xml
