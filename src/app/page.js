@@ -5,9 +5,9 @@ import axios from "axios";
 import Welcome from "@/components/Welcome";
 import SearchBar from "@/components/SearchBar";
 import EmptyArticleMessage from "@/components/EmptyArticleMessage";
-import PostCard from "@/components/Post/PostCard.jsx";
+import PostsCard from "@/components/Posts/PostsCard";
 import SocialBar from "@/components/SocialBar";
-import SkeletonPostCard from "@/components/Post/SkeletonPostCard.jsx"; // Komponen Skeleton
+import SkeletonPostsCard from "@/components/Posts/SkeletonPostsCard.jsx"; // Komponen Skeleton
 
 export default function MainPage() {
   const [posts, setPosts] = useState([]);
@@ -66,7 +66,7 @@ export default function MainPage() {
           // Skeleton Loading
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {Array.from({ length: 16 }).map((_, index) => (
-              <SkeletonPostCard key={index} />
+              <SkeletonPostsCard key={index} />
             ))}
           </div>
         ) : error ? (
@@ -81,7 +81,7 @@ export default function MainPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
-              <PostCard key={post._id} post={post} />
+              <PostsCard key={post._id} post={post} />
             ))}
           </div>
         )}

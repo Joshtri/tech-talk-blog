@@ -1,6 +1,6 @@
 import React from "react";
 
-function SkeletonPostCard() {
+function SkeletonPostsCard() {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden animate-pulse flex flex-col">
       <div className="w-full h-48 bg-gray-300 dark:bg-gray-700"></div>
@@ -18,4 +18,4 @@ function SkeletonPostCard() {
   );
 }
 
-export default SkeletonPostCard;
+export default SkeletonPostsCard;

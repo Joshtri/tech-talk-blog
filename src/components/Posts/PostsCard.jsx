@@ -5,7 +5,7 @@ import { id } from "date-fns/locale";
 import { formatDistanceToNow } from "date-fns";
 import { Dropdown } from "flowbite-react";
 
-function PostCard({ post }) {
+function PostsCard({ post }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleButtonClick = () => {
@@ -95,4 +95,4 @@ function PostCard({ post }) {
   );
 }
 
-export default PostCard;
+export default PostsCard;
