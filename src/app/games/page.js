@@ -1,7 +1,7 @@
 "use client";
 
 // import GameCard from "@components/games/GameCard";
-import GameCard from "@/components/GameCard.jsx";
+import GameCard from "@/components/GameCard";
 
 const gamesData = [
   {
