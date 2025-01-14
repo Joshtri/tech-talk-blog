@@ -5,9 +5,9 @@ import axios from "axios";
 import Welcome from "@/components/Welcome";
 import SearchBar from "@/components/SearchBar";
 import EmptyArticleMessage from "@/components/EmptyArticleMessage";
-import PostCard from "@/components/Post/PostCard";
+import PostCard from "@/components/Post/PostCard.jsx";
 import SocialBar from "@/components/SocialBar";
-import SkeletonPostCard from "@/components/Post/SkeletonPostCard"; // Komponen Skeleton
+import SkeletonPostCard from "@/components/Post/SkeletonPostCard.jsx"; // Komponen Skeleton
 
 export default function MainPage() {
   const [posts, setPosts] = useState([]);
