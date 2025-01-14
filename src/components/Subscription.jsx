@@ -1,33 +1,32 @@
 import axios from 'axios';
-import { useState } from 'react';
+import  { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Subscription() {
   const [email, setEmail] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // State untuk menentukan status loading
 
   const handleSubscribe = async () => {
-    setLoading(true);
+    setLoading(true); // Set loading true saat proses dimulai
     try {
-      // Menggunakan `process.env.NEXT_PUBLIC_BASE_URL` karena ini standar di Next.js
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/subscription`,
-        {
-          email_subscription: email,
-          whats_app_subscription: whatsapp,
-        }
-      );
+      // eslint-disable-next-line no-unused-vars
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/subscription`, {
+        email_subscription: email,
+        whats_app_subscription: whatsapp
+      });
 
-      // Reset input fields setelah sukses
+    //   console.log('Subscription successful:', response.data);
+
+      // Reset input fields after successful subscription
       setEmail('');
       setWhatsapp('');
 
-      // Tampilkan notifikasi sukses
+      // Show success toast
       toast.success('Subscription successful!', {
         position: 'top-right',
-        autoClose: 3000,
+        autoClose: 3000, // Close the toast after 3 seconds
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -35,7 +34,8 @@ function Subscription() {
         progress: undefined,
       });
     } catch (error) {
-      // Tampilkan notifikasi gagal
+    //   console.error('Error subscribing:', error);
+      // Handle error as needed
       toast.error('Subscription failed. Please try again later.', {
         position: 'top-right',
         autoClose: 3000,
@@ -46,12 +46,12 @@ function Subscription() {
         progress: undefined,
       });
     } finally {
-      setLoading(false);
+      setLoading(false); // Set loading false setelah proses selesai (baik berhasil atau gagal)
     }
   };
 
   return (
-    <div className="p-4 max-w-sm mx-auto mt-6">
+    <div className="p-4 max-w-sm mx-auto  mt-6">
       <h2 className="text-2xl font-bold mb-4 text-center dark:text-gray-200">
         Mau dapat email setiap ada postingan baru?
       </h2>
@@ -78,10 +78,8 @@ function Subscription() {
       <div className="flex justify-center">
         <button
           onClick={handleSubscribe}
-          className={`bg-blue-500 text-white px-4 py-2 rounded-lg focus:outline-none ${
-            loading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={loading}
+          className={`bg-blue-500 text-white px-4 py-2 rounded-lg focus:outline-none ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={loading} // Men-disable tombol saat loading berlangsung
         >
           {loading ? 'Loading...' : 'Subscribe'}
         </button>

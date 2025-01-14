@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import React, { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isFocused, setIsFocused] = useState(false); // Untuk efek fokus
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-    onSearch(event.target.value); // Memanggil fungsi pencarian
+    onSearch(event.target.value);
   };
 
   return (
@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
         <div className="flex items-center pl-4">
           <FaSearch
             className={`text-gray-400 dark:text-gray-300 transition-all duration-300 ${
-              isFocused ? "text-blue-500 dark:text-blue-400" : ""
+              isFocused ? 'text-blue-500 dark:text-blue-400' : ''
             }`}
           />
         </div>

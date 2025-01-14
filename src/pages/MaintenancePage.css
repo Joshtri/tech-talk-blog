@@ -1,0 +1,58 @@
+.maintenance-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e293b, #0f172a); /* Gradient gelap */
+    font-family: 'Arial', sans-serif;
+    color: #ffffff; /* Warna teks putih */
+  }
+  
+  .maintenance-icon {
+    font-size: 100px;
+    margin-bottom: 20px;
+    animation: bounce 1.5s infinite;
+  }
+  
+  .maintenance-heading {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .maintenance-message {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .maintenance-loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #4b5563; /* Warna loader */
+    border-top: 5px solid #ffffff; /* Warna loader atas */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animasi */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  

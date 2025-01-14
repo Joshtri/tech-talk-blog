@@ -1,51 +1,86 @@
 import React, { useState } from 'react';
 import { FaWhatsapp, FaX } from 'react-icons/fa6';
-import { FiShare2, FiFacebook, FiTwitter } from 'react-icons/fi';
+import { FiShare2, FiFacebook, FiTwitter, FiInstagram, FiCopy } from 'react-icons/fi';
 
-const ShareButton = () => {
+function ShareButton() {
   const [showOptions, setShowOptions] = useState(false);
 
-  const toggleShareOptions = () => setShowOptions(!showOptions);
+  const toggleShareOptions = () => {
+    setShowOptions(!showOptions);
+  };
 
-  const handleShare = (platform) => {
+  const handleShareWhatsApp = () => {
     const url = window.location.href;
-    const shareUrls = {
-      whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      twitter: `https://twitter.com/share?url=${encodeURIComponent(url)}`,
-    };
-    if (shareUrls[platform]) window.open(shareUrls[platform], '_blank');
+    const message = encodeURIComponent(`Check out this post: ${url}`);
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleShareFacebook = () => {
+    const url = window.location.href;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookUrl, '_blank');
+  };
+
+  const handleShareTwitter = () => {
+    const url = window.location.href;
+    const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(url)}&text=Check out this post!`;
+    window.open(twitterUrl, '_blank');
+  };
+
+  const handleShareInstagram = () => {
+    alert("Instagram doesn't support direct sharing via URL. Share manually!");
   };
 
   return (
-    <div className="relative">
-      <button
-        onClick={toggleShareOptions}
-        className="bg-green-500 text-white px-4 py-2 rounded-md"
-      >
-        <FiShare2 className="inline-block mr-2" />
-        Share
-      </button>
-      {showOptions && (
-        <div className="absolute z-10 bg-white shadow-md rounded-md mt-2 w-40">
-          <ul>
-            <li onClick={() => handleShare('whatsapp')} className="p-2 hover:bg-gray-100 cursor-pointer">
-              <FaWhatsapp className="inline-block mr-2 text-green-500" />
-              WhatsApp
-            </li>
-            <li onClick={() => handleShare('facebook')} className="p-2 hover:bg-gray-100 cursor-pointer">
-              <FiFacebook className="inline-block mr-2 text-blue-600" />
-              Facebook
-            </li>
-            <li onClick={() => handleShare('twitter')} className="p-2 hover:bg-gray-100 cursor-pointer">
-              <FiTwitter className="inline-block mr-2 text-blue-400" />
-              Twitter
-            </li>
-          </ul>
-        </div>
-      )}
+    <div className='flex justify-center mt-4 space-x-2'>
+      <div className='relative'>
+        <button
+          className="px-3 py-1 rounded-md bg-green-400 text-white hover:bg-green-600 hover:text-gray-100 font-semibold flex items-center"
+          onClick={toggleShareOptions}
+        >
+          <FiShare2 className="inline-block mr-1" />
+          Share
+        </button>
+        
+        {/* Dropdown menu for sharing options */}
+        {showOptions && (
+          <div className="absolute z-10 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200">
+            <ul className="py-2">
+              <li
+                onClick={handleShareWhatsApp}
+                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <FaWhatsapp className="mr-2 text-green-500" />
+                WhatsApp
+              </li>
+              <li
+                onClick={handleShareFacebook}
+                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <FiFacebook className="mr-2 text-blue-600" />
+                Facebook
+              </li>
+              <li
+                onClick={handleShareTwitter}
+                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <FaX className="mr-2 text-blue-400" />
+                Twitter
+              </li>
+              <li
+                onClick={handleShareInstagram}
+                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <FiInstagram className="mr-2 text-pink-500" />
+                Instagram
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
+}
 
 export default ShareButton;
