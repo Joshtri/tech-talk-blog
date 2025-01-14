@@ -1,6 +1,6 @@
 "use client";
 
-function GameCard({ game }) {
+function GamesCard({ game }) {
   return (
     <div className="bg-white dark:bg-gray-700 text-black rounded-lg shadow-md p-4 flex flex-col items-center">
       <img
@@ -42,4 +42,4 @@ function GameCard({ game }) {
 }
 
 
-export default GameCard;
+export default GamesCard;

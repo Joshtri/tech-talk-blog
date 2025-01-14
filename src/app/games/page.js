@@ -2,7 +2,7 @@
 
 // import GameCard from "@components/games/GameCard";
 // import GameCard from "@/components/Games/GameCard";
-import GameCard from "@/components/Games/GameCard";
+import GamesCard from "@/components/Games/GamesCard";
 
 
 const gamesData = [
@@ -33,7 +33,7 @@ export default function GamesPage() {
         Explore Our Games
       </h1>
       {gamesData.map((game, index) => (
-        <GameCard key={index} game={game} />
+        <GamesCard key={index} game={game} />
       ))}
     </div>
   );
