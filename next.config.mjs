@@ -12,6 +12,8 @@ const nextConfig = {
     experimental: {
       appDir: true, // Aktifkan App Directory jika menggunakan layout routing baru
     },
+    output: "standalone",
+
   };
   
   export default nextConfig;
