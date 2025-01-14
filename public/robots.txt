@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /private/
-Allow: /
-Sitemap: https://tech-talks-blog.com/sitemap.xml
