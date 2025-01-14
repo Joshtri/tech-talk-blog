@@ -10,9 +10,9 @@ import { MdDateRange } from "react-icons/md";
 import { FiCopy, FiHeart } from "react-icons/fi";
 import { format } from "date-fns";
 import { Flip, toast, ToastContainer } from "react-toastify";
-import Comment from "@/components/readPost/Comment";
-import CommentList from "@/components/readPost/CommentList";
-import ShareButton from "@/components/readPost/ShareButton";
+import Comment from "@/components/ReadPost/Comment";
+import CommentList from "@/components/ReadPost/CommentList";
+import ShareButton from "@/components/ReadPost/ShareButton";
 import Subscription from "@/components/Subscription"; // Import komponen Subscription
 import "react-toastify/dist/ReactToastify.css";
 import "highlight.js/styles/monokai-sublime.css";

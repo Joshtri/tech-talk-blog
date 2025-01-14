@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import StickyHeader from "@/components/news/StickyHeader";
-import NewsCard from "@/components/news/NewsCard";
-import NewsSkeleton from "@/components/news/NewsSkeleton";
+import StickyHeader from "@/components/News/StickyHeader";
+import NewsCard from "@/components/News/NewsCard";
+import NewsSkeleton from "@/components/News/NewsSkeleton";
 
 const newsSources = {
   TechCrunch: "https://techcrunch.com/feed/",

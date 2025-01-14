@@ -1,6 +1,6 @@
 import "./globals.css"; // Import Tailwind
-import NavbarComp from "@/components/partials/Navbar";
-import Footer from "@/components/partials/Footer";
+import NavbarComp from "@/components/Partials/Navbar";
+import Footer from "@/components/Partials/Footer";
 
 export const metadata = {
   title: "Tech Talks Blog",
