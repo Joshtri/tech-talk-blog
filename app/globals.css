@@ -1,0 +1,9 @@
+/* Import external styles first */
+@import "flowbite";
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles (jika ada) */
